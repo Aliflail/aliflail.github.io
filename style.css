@@ -1,0 +1,87 @@
+body{
+	font-family: 'Merienda', cursive;
+}
+
+.fa{
+	padding-right: 20px;
+	font-size: 20px;
+}
+.navbar{
+	padding: 1.5rem 1rem;
+}
+.bg-light{
+	background-color: #ffff!important;
+}
+.intro{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.intro h1{
+	padding-top: 5%;
+	padding-left: 25%;
+	padding-right: 25%;
+	padding-bottom: 30px;
+	display: block;
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+
+	font-size: 35px;
+}
+.intro h3{
+	padding-bottom: 30px;
+	
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+	font-size: 20px;
+	color: #A5A8AD;
+}
+
+.mycontainer{
+margin: auto;
+padding: 20px;
+}
+
+.portfolios{
+width: 100%;
+display: block;
+}
+.project-cover{
+width: 100%;
+}
+.details-wrap{
+	  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin-left: 14px;
+  margin-right: 14px;
+  
+  opacity: 0;
+  transition: .5s ease;
+background: linear-gradient(
+        45deg,
+        rgba(29, 236, 197, 0.7),
+        rgba(91, 14, 214, 0.7) 100%
+      );
+}
+
+.project-cover:hover .details-wrap{
+	opacity: 1;
+}
+.details-inner {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
