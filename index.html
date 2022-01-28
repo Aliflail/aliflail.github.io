@@ -31,8 +31,8 @@
       <li class="nav-item">
         <a class="nav-link" href="#">ABOUT</a>
       </li>
-    </ul>
-      <a class="navbar-brand center" style="display:flex; width: 100%; justify-content: center; " href="index.html">Alif Noushad</a>
+    </ul><center>
+      <a class="navbar-brand center" style="/*display:flex; width: 100%; justify-content: center;*/ padding-right: 20px; " href="index.html">Alif Noushad</a></center>
     <span class="navbar-text">
       <ul class="navbar-nav">
       	<li><a href="https://www.linkedin.com/in/alifnoushad/" class="fa fa-linkedin"></a>
@@ -45,9 +45,14 @@
     </span>
   </div>
 </nav>
-<div class="intro">
-	<h1>Hi! I am Alif, I love to design! </br>I am a UX Designer at IBM iX Studios, Dubai</h1>
-	<h3> Scroll down to see my work
+<div class="intro " >
+  
+
+
+
+
+	<h1 id="demo" ></h1><h2>I am a UX Designer at IBM iX Studios, Dubai</h2>
+	</br><h3> Scroll down to see my work
 	</h3>
 	</div>
 		</div>
@@ -168,6 +173,36 @@
 
 
 	<script scr="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+<script>
+var i = 16,j=1;
+var txt = ['Hi! I am Alif, I love to design! ','Hi! I am Alif, I create awesome experience!', 'Hi! I am Alif, I observe. reflect. make.'];
 
+var speed = 50;
+document.getElementById("demo").innerHTML = txt[0];
+
+window.onload=function typeWriter() {
+
+  if (document.getElementById("demo").innerHTML.length > 16) {
+
+    document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML.slice(0,-1) ;
+    
+    setTimeout(typeWriter, speed);
+  }
+  else if (i < (txt[j].length) && j <4) {
+    document.getElementById("demo").innerHTML += txt[j].charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+    
+  }
+  if(i=txt[j].length){
+    i=0; 
+    if(j<4){
+      j++;}
+    else{
+      j=0;
+    }
+  }
+}
+</script>
 	</body>
 	</html>

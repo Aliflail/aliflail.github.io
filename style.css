@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 body{
-	font-family: 'Merienda', cursive;
+	font-family: 'Poppins', sans-serif;
 }
 
 .fa{
@@ -7,7 +8,8 @@ body{
 	font-size: 24px;
 }
 .navbar{
-	padding: 1.5rem 1rem;
+	font-weight: 800;
+	padding: 2rem 2rem;
 }
 .bg-light{
 	background-color: #ffff!important;
@@ -22,22 +24,38 @@ body{
 	padding-top: 5%;
 	padding-left: 25%;
 	padding-right: 25%;
+	
+	display: block;
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+	font-weight: 800;
+	font-size: 40px;
+	 white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);   
+}
+.intro h2{
+	font-weight: 400;
+	color:#A5A8AD;
+	font-size: 20px;
+	padding-left: 25%;
+	padding-right: 25%;
 	padding-bottom: 30px;
 	display: block;
 	width: 100%;
 	justify-content: center;
 	text-align: center;
-
-	font-size: 35px;
 }
 .intro h3{
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 	font-family: 'Roboto Mono', monospace;
 	width: 100%;
 	justify-content: center;
 	text-align: center;
-	font-size: 20px;
+	font-size: 15px;
 	color: #A5A8AD;
+	
 }
 
 .mycontainer{
@@ -86,3 +104,16 @@ background: linear-gradient(
   text-align: center;
 }
 
+
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
