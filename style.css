@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 body{
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Merienda', sans-serif;
 }
 
 .fa{
@@ -21,19 +21,19 @@ body{
 	flex-wrap: wrap;
 }
 .intro h1{
-	padding-top: 5%;
+	padding-top: 4%;
 	padding-left: 25%;
 	padding-right: 25%;
-	
+	padding-bottom: 5%;
 	display: block;
 	width: 100%;
 	justify-content: center;
 	text-align: center;
-	font-weight: 800;
-	font-size: 40px;
-	 white-space: nowrap;
-    overflow: hidden;
-    transform: translateY(-50%);   
+	font-weight: 600;
+	font-size: 2.1vw;
+	
+    
+    
 }
 .intro h2{
 	font-weight: 400;
@@ -41,7 +41,7 @@ body{
 	font-size: 20px;
 	padding-left: 25%;
 	padding-right: 25%;
-	padding-bottom: 30px;
+	padding-bottom: 25px;
 	display: block;
 	width: 100%;
 	justify-content: center;
@@ -53,7 +53,7 @@ body{
 	width: 100%;
 	justify-content: center;
 	text-align: center;
-	font-size: 15px;
+	font-size: 1.2vw;
 	color: #A5A8AD;
 	
 }
@@ -69,6 +69,7 @@ display: block;
 }
 .project-cover{
 width: 100%;
+    margin-top: 15px;
 }
 .details-wrap{
 	  position: absolute;
@@ -94,7 +95,7 @@ background: linear-gradient(
 }
 .details-inner {
   color: white;
-  font-size: 20px;
+  font-size: 1.5vw;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -104,7 +105,10 @@ background: linear-gradient(
   text-align: center;
 }
 
-
+.head{
+	width:600px;
+	justify-content: center;
+}
 .anim-typewriter{
   animation: typewriter 4s steps(44) 1s 1 normal both,
              blinkTextCursor 500ms steps(44) infinite normal;
@@ -117,3 +121,34 @@ background: linear-gradient(
   from{border-right-color: rgba(255,255,255,.75);}
   to{border-right-color: transparent;}
 }
+
+
+@media only screen and (max-width: 988px) {
+
+	.intro h1{
+		font-size: 3vw;
+    padding: 16%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+	}
+.intro h3{
+font-size: 2vw;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.intro h1{
+		font-size: 6vw;
+    padding: 16%;
+    padding-top: 6%;
+    padding-bottom: 6%;
+
+	}
+
+	.intro h3{
+font-size: 4vw;
+	}
+}
+
+
