@@ -113,6 +113,18 @@ background: linear-gradient(
   animation: typewriter 4s steps(44) 1s 1 normal both,
              blinkTextCursor 500ms steps(44) infinite normal;
 }
+
+.images{
+	flex-wrap: nowrap;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding:20px;
+}
+.content{
+	display: block;
+	width:100%;
+}
 @keyframes typewriter{
   from{width: 0;}
   to{width: 24em;}
@@ -149,6 +161,7 @@ font-size: 2vw;
 	.intro h3{
 font-size: 4vw;
 	}
+
 }
 
 
