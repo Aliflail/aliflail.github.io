@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
-	
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Handlee&family=Itim&family=Merienda&family=Roboto+Mono:wght@300;400&family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -30,10 +32,10 @@
         <a class="nav-link" href="index.html">WORK <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ABOUT</a>
+        <a class="nav-link" href="about.html">ABOUT</a>
       </li>
     </ul>
-     <a class="navbar-brand center" style="display:flex; width: 100%; justify-content: center; " href="index.html">Alif Noushad</a>
+     <!--<a class="navbar-brand center" style="display:flex; width: 100%; justify-content: center; " href="index.html">Alif Noushad</a><-->
     <span class="navbar-text">
       <ul class="navbar-nav">
       	<li><a href="https://www.linkedin.com/in/alifnoushad/" class="fa fa-linkedin"></a>
@@ -46,14 +48,16 @@
     </span>
   </div>
 </nav>
+<div class="recone"></div>
+
 <div class="intro " >
   
-
-
-
-	<h1>Hi! I am Alif Noushad, I love to design!</br> I am a UX Designer at IBM iX Studios, Dubai</h1>
-	<h3> Scroll down to see my work
-	</h3>
+<img src="img/hello.gif" alt="Computer man" style="width:148px;height:auto; padding-bottom: 20px;" class="center">
+	<h1><!--<span class="funky" style="font-size: 2.5vw; font-family: 'Permanent Marker', cursive;  background: -webkit-linear-gradient(#22A4E8, #07D898);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; ">Hello there!</span></br>--> I am Alif, I love to design!</br></h1><h5> I am a UX Designer at IBM iX Studios in Dubai, currently helping differnt clients from industries like government and petrochemical by learning their problems and designing simple solutions to make their life easier.</h5>
+	<h6> Scroll down to see my work
+	</h6>
 	</div>
 		</div>
 
@@ -83,7 +87,7 @@
             </div>
           </a>
 </div>
-        <!--<div class=" col-lg-4 col-md-6 col-sm-12">
+        <div class=" col-lg-4 col-md-6 col-sm-12">
     
   
   <a class="project-cover" href="smrt.html" >
@@ -106,7 +110,7 @@
               </div>
             </div>
           </a>
-</div>-->
+</div>
 	<div class=" col-lg-4 col-md-6 col-sm-12">
 		
 	
@@ -166,39 +170,16 @@
 </div>
 
 
+<!-- Footer 
+<footer class="footer">
+<div class="container">
+  <span class="text-muted">Want to contact me? mail me at <a href="email:alifnoushad.96@gmail.com"> alifnoushad.96@gmail.com</a></span>
+</div>
 
-	<script scr="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
-<script>
-var i = 16,j=1;
-var txt = ['Hi! I am Alif, I love to design! ','Hi! I am Alif, I create awesome experience!', 'Hi! I am Alif, I observe. reflect. make.'];
 
-var speed = 50;
-document.getElementById("demo").innerHTML = txt[0];
-
-window.onload=function typeWriter() {
-
-  if (document.getElementById("demo").innerHTML.length > 16) {
-
-    document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML.slice(0,-1) ;
-    
-    setTimeout(typeWriter, speed);
-  }
-  else if (i < (txt[j].length) && j <4) {
-    document.getElementById("demo").innerHTML += txt[j].charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-    
-  }
-  if(i=txt[j].length){
-    i=0; 
-    if(j<4){
-      j++;}
-    else{
-      j=0;
-    }
-  }
-}
-</script>
+</footer>
+Footer -->
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
