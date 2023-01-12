@@ -90,10 +90,19 @@ background-color:#DDECE9 ;
 
 	
 }
+.introimg img{
+
+	max-height: 600px
+	margin: 0 0 0 0;
+	width: 100%;
+height: auto;
+padding-right: 10%;
+	opacity: 1;
+}
 .intro a{
 		text-decoration: underline;
 	color: #000000 !important;
-	font-size: 1.3vw;
+	font-size: 1.6vw;
 	background-color: #82F7D0;
 }
 
@@ -104,6 +113,16 @@ padding-top: 5%;
 background-color:#DDECE9 ;
 }
 
+.Projecthead_container{
+margin: auto;
+padding: 2% 10% 4% 10%;
+background-color:#DDECE9 ;
+color: #23423C;
+}
+
+.Projecthead_container h2{
+
+}
 .portfolios{
 width: 100%;
 display: block;
@@ -288,6 +307,11 @@ font-weight: 100;
     padding-bottom: 3%;
 
 	}
+
+	.introimg img{
+		opacity: 0;
+    display: none;
+	}
 .intro a{
 font-size: 2vw;
 	}
@@ -295,6 +319,10 @@ font-size: 2vw;
 
 	font-size: 2.5vw;
 }
+.details-inner {
+
+  font-size: 2.4vw;
+	}
 }
 .funky {
 
@@ -309,6 +337,11 @@ font-weight: 600;
     padding: 10%;
     padding-top: 6%;
     padding-bottom: 6%;
+
+	}
+	.introimg img{
+		opacity: 0;
+    display: none;
 
 	}
 	.summary_text{
@@ -329,7 +362,9 @@ font-weight: 600;
 	text-align: center;
 	padding-bottom: 20px;
 }
+.details-inner {
 
+  font-size: 3vw;
 	}
 
 }
