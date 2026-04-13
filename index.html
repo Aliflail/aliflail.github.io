@@ -1,271 +1,847 @@
-<!DOCTYPE HTML>
-	<html>
-	<head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDQC7BBLY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alif — Senior Experience Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;--off:#fafafa;--ink:#111111;--mid:#555555;
+  --light:#767676;--rule:#e8e8e8;--hover-bg:#f5f5f5;
+  --mono:'Jost',sans-serif;--serif:'Playfair Display',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--mono);font-weight:300;color:var(--ink);background:#ede9e3;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background 0.7s ease}
+body.scrolled{background:#ffffff}
 
-  gtag('config', 'G-TKDQC7BBLY');
-</script>
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="HandheldFriendly" content="true">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="img/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-		<title>Alif Noushad | UX Designer</title>
-	<script src="parallax.js"></script>
-	</head>
-	<body>
-		<div class="main">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+/* ── GLOBAL ── */
+.label{font-size:.65rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--light)}
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html"><span style="font-family: 'Abril Fatface', cursive; color: #23423C; size: 50px;">ALIF NOUSHAD </span><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="#projects">WORK </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="about.html">ABOUT</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="img/resume.pdf" target="_blank" download="Alif_Noushad_UX_Designer">RESUME</a>
-      </li>
+/* ── NAV ── */
+nav{padding:2rem 3rem;max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline}
+.nav-name{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);text-decoration:none}
+.nav-right{display:flex;gap:2.5rem;list-style:none}
+.nav-right a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);text-decoration:none;transition:color .2s}
+.nav-right a:hover{color:var(--ink)}
+
+/* ── HERO ── */
+.hero{padding:5rem 3rem 6rem;max-width:1040px;margin:0 auto}
+.hero-tag{margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.hero-tag::before{content:'';width:1.8rem;height:1px;background:var(--light)}
+.hero-headline{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;max-width:16ch;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s ease .1s forwards}
+.hero-headline em{font-style:italic}
+.hero-bio{font-size:1rem;color:var(--mid);line-height:1.8;max-width:52ch;margin-bottom:4rem;opacity:0;animation:fadeUp .8s ease .25s forwards}
+.focus-areas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease .4s forwards}
+.focus-pill{font-size:.72rem;letter-spacing:.08em;padding:.45rem 1rem;border:1px solid var(--rule);color:var(--mid);border-radius:100px;transition:border-color .2s,color .2s}
+.focus-pill:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ── PROJECTS ── */
+.projects-section{border-top:1px solid var(--rule);padding:5rem 3rem;max-width:1040px;margin:0 auto}
+.projects-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3.5rem}
+.project-row{display:grid;grid-template-columns:2.5fr 1fr 1fr auto;align-items:center;padding:2rem 0;border-bottom:1px solid var(--rule);gap:2rem;cursor:pointer;transition:background .15s,padding .15s,margin .15s;text-decoration:none;color:inherit}
+.project-row:first-child{border-top:1px solid var(--rule)}
+.project-row:hover{background:var(--hover-bg);margin:0 -2rem;padding-left:2rem;padding-right:2rem}
+.proj-index{font-size:.6rem;letter-spacing:.12em;color:var(--light);margin-bottom:.5rem}
+.proj-name{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin-bottom:.3rem;line-height:1.2}
+.proj-scope{font-size:.78rem;color:var(--mid);line-height:1.5}
+.proj-meta-label{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.25rem}
+.proj-meta-val{font-size:.72rem;color:var(--mid);line-height:1.6}
+.proj-action{display:flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);white-space:nowrap;transition:color .2s}
+.project-row:hover .proj-action{color:var(--ink)}
+.lock-icon{width:14px;height:14px;opacity:.4;transition:opacity .2s}
+.project-row:hover .lock-icon{opacity:1}
+
+/* ── ABOUT ── */
+.about-strip{border-top:1px solid var(--rule);padding:5rem 3rem;max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start}
+.about-heading{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;line-height:1.25;letter-spacing:-.01em}
+.about-heading em{font-style:italic}
+.about-content p{font-size:.9rem;color:var(--mid);line-height:1.85;margin-bottom:1.2rem}
+.about-links{margin-top:2.5rem;display:flex;gap:1.5rem}
+.link-btn{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:.2rem;transition:border-color .2s}
+.link-btn:hover{border-color:var(--ink)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:.65rem;letter-spacing:.08em;color:var(--light)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--ink)}
+
+/* ═══════ GATE ═══════ */
+.gate-overlay{position:fixed;inset:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.gate-overlay.active{display:flex}
+.gate-overlay.visible{opacity:1}
+.gate-box{text-align:center;max-width:360px;padding:2rem}
+.gate-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--light);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.gate-title{font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:.5rem;line-height:1.2}
+.gate-sub{font-size:.8rem;color:var(--mid);margin-bottom:2.5rem;line-height:1.6}
+.gate-input-wrap{display:flex;border:1px solid var(--rule);overflow:hidden;margin-bottom:1rem;transition:border-color .2s}
+.gate-input-wrap:focus-within{border-color:var(--ink)}
+.gate-input-wrap.error{border-color:#e74c3c}
+.gate-input{flex:1;border:none;outline:none;padding:.85rem 1.2rem;font-family:var(--mono);font-size:.85rem;font-weight:300;color:var(--ink);background:transparent;letter-spacing:.1em}
+.gate-input::placeholder{color:var(--light)}
+.gate-submit{background:var(--ink);color:#fff;border:none;padding:.85rem 1.4rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.gate-submit:hover{background:#333}
+.gate-error{font-size:.72rem;color:#e74c3c;opacity:0;transition:opacity .2s;margin-bottom:.5rem;min-height:1.2em}
+.gate-error.show{opacity:1}
+.gate-hint{font-size:.68rem;color:var(--light);line-height:1.6}
+.gate-hint a{color:var(--mid);text-decoration:underline;text-underline-offset:2px}
+.gate-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);cursor:pointer;transition:color .2s}
+.gate-close:hover{color:var(--ink)}
+.nda-dot{width:5px;height:5px;border-radius:50%;background:#f39c12;display:inline-block}
+
+/* ═══════ CASE STUDY MODAL ═══════ */
+.case-modal{position:fixed;inset:0;background:#ede9e3;z-index:300;display:none;overflow-y:auto;opacity:0;transform:translateY(24px);transition:opacity .4s ease,transform .4s ease,background 0.7s ease}
+.case-modal.active{display:block}
+.case-modal.visible{opacity:1;transform:translateY(0)}
+.case-modal.scrolled{background:#ffffff}
+.modal-nav{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:10}
+.modal-back{display:flex;align-items:center;gap:.6rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);cursor:pointer;background:none;border:none;transition:color .2s}
+.modal-back:hover{color:var(--ink)}
+.modal-breadcrumb{font-size:.65rem;letter-spacing:.1em;color:var(--light)}
+.modal-nda{display:flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);border:1px solid var(--rule);padding:.35rem .8rem;border-radius:100px}
+
+/* ═══════ CS CONTENT ═══════ */
+.cs-wrap{max-width:760px;margin:0 auto;padding:5rem 3rem 8rem}
+.cs-eyebrow{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.cs-tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--light)}
+.cs-tag-sep{color:var(--rule)}
+.cs-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem}
+.cs-title em{font-style:italic}
+.cs-summary{font-size:1.05rem;color:var(--mid);line-height:1.75;max-width:56ch;margin-bottom:3.5rem;border-left:2px solid var(--rule);padding-left:1.5rem}
+.cs-meta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:5rem}
+.cs-meta-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:.4rem}
+.cs-meta-value{font-size:.82rem;color:var(--ink);line-height:1.4}
+.cs-section{margin-bottom:5rem}
+.cs-section-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--light);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.cs-section-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.cs-section-heading{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:400;line-height:1.25;margin-bottom:1.2rem;letter-spacing:-.01em}
+.cs-section-heading em{font-style:italic}
+.cs-body{font-size:.88rem;color:var(--mid);line-height:1.9;margin-bottom:1.2rem}
+.cs-body strong{color:var(--ink);font-weight:500}
+.cs-pullquote{border-left:2px solid var(--ink);padding:.5rem 0 .5rem 1.8rem;margin:2.5rem 0}
+.cs-pullquote p{font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--ink);line-height:1.5}
+.cs-steps{margin-top:2rem}
+.cs-step{display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--rule)}
+.cs-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cs-step-num{font-family:var(--serif);font-size:1.8rem;color:var(--rule);font-weight:400;line-height:1;padding-top:.1rem}
+.cs-step-title{font-size:.85rem;font-weight:500;color:var(--ink);margin-bottom:.5rem}
+.cs-step-body{font-size:.82rem;color:var(--mid);line-height:1.8}
+.cs-step-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.cs-step-tag{font-size:.58rem;letter-spacing:.08em;padding:.25rem .65rem;border:1px solid var(--rule);color:var(--light);border-radius:100px}
+.cs-artefact{background:var(--off);border:1px solid var(--rule);padding:3rem 2rem;text-align:center;margin:2rem 0}
+.cs-artefact-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:.5rem}
+.cs-artefact-title{font-family:var(--serif);font-size:1rem;color:var(--mid);font-style:italic}
+.cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin:2rem 0}
+.cs-stat{border-top:2px solid var(--ink);padding-top:1.2rem}
+.cs-stat-num{font-family:var(--serif);font-size:2.8rem;font-weight:400;line-height:1;margin-bottom:.4rem}
+.cs-stat-num sup{font-size:1.4rem}
+.cs-stat-label{font-size:.75rem;color:var(--mid);line-height:1.5}
+.cs-reflections{margin-top:1.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.cs-reflection{display:grid;grid-template-columns:1.8rem 1fr;gap:1rem}
+.cs-reflection-arrow{color:var(--light);font-size:.8rem;padding-top:.2rem}
+.cs-reflection-title{font-size:.85rem;font-weight:500;color:var(--ink);margin-bottom:.3rem}
+.cs-reflection-body{font-size:.8rem;color:var(--mid);line-height:1.75}
+.cs-cta{border-top:1px solid var(--rule);padding-top:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.cs-cta-text{font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--mid)}
+.cs-cta-btn{background:var(--ink);color:#fff;border:none;padding:.85rem 2rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s}
+.cs-cta-btn:hover{background:#333}
+.cs-nda-note{margin-top:2.5rem;font-size:.7rem;color:var(--light);line-height:1.7;padding:1.2rem 1.5rem;border:1px solid var(--rule);border-radius:2px}
+
+/* Context box — for strategic framing */
+.cs-context-box{background:var(--off);border:1px solid var(--rule);padding:2rem;margin:2rem 0}
+.cs-context-box h4{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:1rem}
+.cs-context-box p{font-size:.82rem;color:var(--mid);line-height:1.8}
+
+/* Two-col insight */
+.cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0}
+.cs-insight-card{border-top:1px solid var(--rule);padding-top:1.2rem}
+.cs-insight-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.6rem}
+.cs-insight-text{font-size:.82rem;color:var(--mid);line-height:1.75}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  nav{padding:1.5rem}
+  .nav-right{display:none}
+  .hero,.projects-section,.about-strip{padding-left:1.5rem;padding-right:1.5rem}
+  .project-row{grid-template-columns:1fr auto;gap:1rem}
+  .proj-meta-label,.proj-meta-val{display:none}
+  .about-strip{grid-template-columns:1fr;gap:2.5rem}
+  footer{flex-direction:column;gap:1rem;padding:1.5rem}
+  .modal-nav{padding:1rem 1.5rem}
+  .cs-wrap{padding:3rem 1.5rem 6rem}
+  .cs-meta-row{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .cs-stats{grid-template-columns:1fr;gap:1.5rem}
+  .cs-two-col{grid-template-columns:1fr}
+  .cs-cta{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ MAIN SITE ═══════ -->
+<div id="main-site">
+  <nav>
+    <a href="#" class="nav-name">Alif</a>
+    <ul class="nav-right">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:hello@alifdesigns.com">Contact</a></li>
+      <li><a href="resume.pdf" download style="color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:1px">Resume ↓</a></li>
     </ul>
-     <!--<a class="navbar-brand center" style="display:flex; width: 100%; justify-content: center; " href="index.html">Alif Noushad</a><-->
-    <span class="navbar-text">
-      <ul class="navbar-nav">
-      	<li><a href="https://www.linkedin.com/in/alifnoushad/" class="fa fa-linkedin"></a>
-      	</li>
-      	<li><a href="https://dribbble.com/AlifNoushad" class="fa fa-dribbble"></a>
-      	</li>
-      	<li><a href="https://www.behance.net/alifnoushad" class="fa fa-behance"></a>
-      	</li>
-      </ul>
-    </span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-tag"><span class="label">Senior Experience Designer</span></div>
+    <h1 class="hero-headline">Designing for humans,<br><em>at enterprise scale.</em></h1>
+    <p class="hero-bio">I work at the intersection of UX strategy, service design, and AI-enabled experience — helping organisations think clearly about what their customers actually need before deciding how to build it. Based in Dubai with IBM iX Studio, pursuing senior design and experience strategy roles in Melbourne.</p>
+    <div class="focus-areas">
+      <span class="focus-pill">UX Strategy</span>
+      <span class="focus-pill">Service Design</span>
+      <span class="focus-pill">AI Experience Design</span>
+      <span class="focus-pill">Information Architecture</span>
+      <span class="focus-pill">Enterprise Product Design</span>
+    </div>
+  </header>
+
+  <section class="projects-section" id="work">
+    <div class="projects-header">
+      <span class="label">Selected Work</span>
+      <span class="label" style="font-size:.58rem">Password required · Available on request</span>
+    </div>
+    <div>
+      <div class="project-row" onclick="openGate('toyota')">
+        <div class="proj-main">
+          <div class="proj-index">01</div>
+          <div class="proj-name">Toyota &amp; Lexus UAE</div>
+          <div class="proj-scope">End-to-end digital transformation across two automotive brands — experience strategy, IA, 14+ journey maps, and AI integration design.</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">Client</div>
+          <div class="proj-meta-val">Al-Futtaim × IBM iX</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">My Role</div>
+          <div class="proj-meta-val">Senior Experience Designer</div>
+        </div>
+        <div class="proj-action">
+          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          View
+        </div>
+      </div>
+      <div class="project-row" onclick="openGate('alghurair')">
+        <div class="proj-main">
+          <div class="proj-index">02</div>
+          <div class="proj-name">Al Ghurair Properties</div>
+          <div class="proj-scope">AI-powered pricing intelligence platform for senior management — enabling strategic scenario planning and forecasting across a 50+ building residential portfolio.</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">Client</div>
+          <div class="proj-meta-val">Al Ghurair Group</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">My Role</div>
+          <div class="proj-meta-val">UX Strategy Lead</div>
+        </div>
+        <div class="proj-action">
+          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          View
+        </div>
+      </div>
+      <div class="project-row" onclick="openGate('blueapp')">
+        <div class="proj-main">
+          <div class="proj-index">03</div>
+          <div class="proj-name">Blue App — Al-Futtaim</div>
+          <div class="proj-scope">Gamification and avatar collectibles system for a retail super-app — engagement mechanics, loyalty UX, and digital identity design. Partially live.</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">Client</div>
+          <div class="proj-meta-val">Al-Futtaim Group</div>
+        </div>
+        <div>
+          <div class="proj-meta-label">My Role</div>
+          <div class="proj-meta-val">Experience Designer</div>
+        </div>
+        <div class="proj-action">
+          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          View
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-strip" id="about">
+    <div>
+      <h2 class="about-heading">Strategy-led.<br><em>Research-grounded.</em><br>Delivery-focused.</h2>
+    </div>
+    <div class="about-content">
+      <p>I'm a Senior Experience Designer at IBM iX Studio Dubai, working across large-scale enterprise engagements. My work spans discovery research, service design, information architecture, AI-enabled experience design, and strategic storytelling for client stakeholders.</p>
+      <p>I lead with questions before I lead with solutions. The work I'm most proud of isn't the deliverables — it's the moments where the right framing of a problem changed what got built. That happens at the strategy end, not the execution end, and that's where I operate best.</p>
+      <p>I'm currently pursuing senior Experience Design and Experience Strategy roles in Melbourne, open to consultancy, in-house product, and hybrid contexts across enterprise and scale-up organisations.</p>
+      <div class="about-links">
+        <a href="https://linkedin.com" class="link-btn" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@alifdesigns.com" class="link-btn">Email me</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© 2025 Alif · Senior Experience Designer</span>
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:hello@alifdesigns.com">Email</a></li>
+    </ul>
+  </footer>
+</div>
+
+<!-- ═══════ GATE ═══════ -->
+<div class="gate-overlay" id="gate-overlay">
+  <button class="gate-close" onclick="closeGate()">Close ✕</button>
+  <div class="gate-box">
+    <div class="gate-label"><span class="nda-dot"></span>Protected Case Study</div>
+    <h2 class="gate-title" id="gate-title">—</h2>
+    <p class="gate-sub">This case study contains confidential process documentation. Enter the password shared in the application email to continue.</p>
+    <div class="gate-input-wrap" id="gate-wrap">
+      <input type="password" class="gate-input" id="gate-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="off"/>
+      <button class="gate-submit" onclick="checkPassword()">Enter</button>
+    </div>
+    <div class="gate-error" id="gate-error">Incorrect password. Please try again.</div>
+    <p class="gate-hint">Don't have the password? <a href="mailto:hello@alifdesigns.com">Request access →</a></p>
   </div>
-</nav>
-<div class="recone"></div>
+</div>
 
-
-<div class="intro " >
-  
-<div class="row">
-  <div class="col-md-8 col-sm-12">
-      <h1><!--<span class="funky" style="font-size: 2.5vw; font-family: 'Permanent Marker', cursive;  background: -webkit-linear-gradient(#22A4E8, #07D898);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; ">Hello there!</span></br>--> Hi, I am Alif. </br></h1>
-<h5>I am a product designer at IBM iX in Dubai. I make complex things simple through design thinking and human-centered design.</br></br>
-I am an engineer by degree and a designer by passion. I'm endlessly intrigued by problems in need of a solution
-</h5>
- <!-- <h6> <a href="#projects">Click to view my work</a>
-  </h6>-->
+<!-- ═══════════════════════════════════════════
+     CASE STUDY 01 — TOYOTA & LEXUS UAE
+════════════════════════════════════════════ -->
+<div class="case-modal" id="cs-toyota">
+  <div class="modal-nav">
+    <button class="modal-back" onclick="closeCase('cs-toyota')">← Back to portfolio</button>
+    <span class="modal-breadcrumb">Case Study 01 of 03</span>
+    <div class="modal-nda"><span class="nda-dot"></span>NDA Compliant · Process only</div>
   </div>
-  <div class="col-md-4 introimg">
-    <img src="img/dp2.png">
+  <div class="cs-wrap">
+    <div class="cs-eyebrow">
+      <span class="cs-tag">Enterprise UX</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">Automotive</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">2024–2025</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">IBM iX Studio Dubai</span>
+    </div>
+    <h1 class="cs-title">Toyota &amp; Lexus UAE —<br><em>Digital Experience</em><br>Transformation</h1>
+    <p class="cs-summary">Redesigning two flagship automotive digital ecosystems from fragmented touchpoints into cohesive, AI-enabled customer journeys — across 14+ mapped experiences, two distinct brand personalities, and a shared technology platform.</p>
+    <div class="cs-meta-row">
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al-Futtaim Group × IBM iX</div></div>
+      <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Senior Experience Designer</div></div>
+      <div><div class="cs-meta-label">Duration</div><div class="cs-meta-value">12 months</div></div>
+      <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Strategy, IA, Journeys, AI Design</div></div>
+    </div>
+
+    <!-- 01 PROBLEM -->
+    <div class="cs-section">
+      <div class="cs-section-label">01 — The Problem</div>
+      <h2 class="cs-section-heading">Two iconic brands. <em>One fractured digital experience.</em></h2>
+      <p class="cs-body">Al-Futtaim Group is the exclusive distributor of Toyota and Lexus in the UAE. Their digital estates had grown organically over years, producing <strong>disconnected touchpoints, unclear navigation paths, and broken handoffs</strong> across the pre-purchase funnel. Customers exploring a vehicle online faced a smooth configuration experience that dead-ended before finance; test drive bookings that didn't connect to showroom systems; and no continuity between digital research and in-dealership conversation.</p>
+      <div class="cs-two-col">
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">User Pain — Toyota</div>
+          <div class="cs-insight-text">Buyers were abandoning finance journeys at high rates. Research showed the gap between "I like this car" and "I know I can afford this car" was never bridged digitally — customers left to figure it out themselves.</div>
+        </div>
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">User Pain — Lexus</div>
+          <div class="cs-insight-text">Premium buyers expected a concierge-quality experience. Instead they encountered the same transactional flows as volume Toyota buyers — eroding brand perception before a single conversation with a sales team.</div>
+        </div>
+      </div>
+      <div class="cs-pullquote">
+        <p>"The challenge wasn't designing better screens — it was architecting the connective tissue between a showroom visit, a WhatsApp enquiry, an online configuration, and a finance application."</p>
+      </div>
+      <p class="cs-body">The added complexity: Toyota and Lexus share infrastructure but serve fundamentally different customers. Any solution had to maintain genuine brand distinction while achieving system efficiency — a tension that shaped every design decision on the project.</p>
+    </div>
+
+    <!-- 02 ROLE -->
+    <div class="cs-section">
+      <div class="cs-section-label">02 — My Role &amp; Constraints</div>
+      <h2 class="cs-section-heading">What I owned, <em>and what made it hard.</em></h2>
+      <p class="cs-body">I was the lead experience designer on both brands simultaneously — working within IBM iX's delivery structure alongside strategy, content, and technology workstreams. I owned the <strong>experience vision, information architecture, journey design, AI integration scoping, and client-facing strategic communication</strong> across both toyota.ae and lexus.ae.</p>
+      <div class="cs-context-box">
+        <h4>Key Constraints</h4>
+        <p>Legacy technology platform with limited flexibility · Competing priorities between Al-Futtaim's marketing and digital teams · Compressed delivery timeline · Designing for the UAE's multicultural, mobile-first, high-consideration buying context — not a Western template · Dual-brand scope with a single design resource</p>
+      </div>
+      <p class="cs-body"><strong>NDA note:</strong> Specific wireframes, unreleased UI, and client research data are withheld. What follows describes process, methodology, and strategic framing only.</p>
+    </div>
+
+    <!-- 03 APPROACH -->
+    <div class="cs-section">
+      <div class="cs-section-label">03 — How I Approached It</div>
+      <h2 class="cs-section-heading">A structured process <em>through genuine complexity.</em></h2>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div>
+            <div class="cs-step-title">Discovery — Understanding the actual customer</div>
+            <p class="cs-step-body">Conducted qualitative interviews with UAE-based car buyers across both brand segments — first-time buyers, upgrade customers, fleet purchasers, premium Lexus buyers. Ran heuristic evaluations and session analysis across both live sites. Synthesised findings using a custom AI research tool I built specifically for the project, reducing analysis time by approximately 60% and improving insight consistency across the team.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Qualitative interviews</span><span class="cs-step-tag">Heuristic evaluation</span><span class="cs-step-tag">Session analysis</span><span class="cs-step-tag">Persona development</span><span class="cs-step-tag">AI synthesis tool</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div>
+            <div class="cs-step-title">Strategy — Defining what "distinct" means at the system level</div>
+            <p class="cs-step-body">Authored experience principles and a future-state vision for both brands. The core strategic question was: what does "same system, different spirit" mean in practice? Toyota required warmth, accessibility, and family-first framing. Lexus required restraint, refinement, and a concierge-level digital feel. I built this distinction into navigation language, page hierarchy, interaction patterns, and even the tone of error states — not just visual design.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Experience principles</span><span class="cs-step-tag">Brand distinction framework</span><span class="cs-step-tag">Future-state vision</span><span class="cs-step-tag">Stakeholder workshops</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div>
+            <div class="cs-step-title">Architecture — Rebuilding from customer intent, not org structure</div>
+            <p class="cs-step-body">Rebuilt the IA models for toyota.ae and lexus.ae from first principles. Rather than reorganising existing content, I restructured around how someone actually thinks about buying a car — not how Al-Futtaim's internal teams are organised. Produced detailed site maps, taxonomy documentation, and navigation system specs for both brands, with explicit rationale for every structural decision.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Site architecture</span><span class="cs-step-tag">Navigation design</span><span class="cs-step-tag">Content taxonomy</span><span class="cs-step-tag">IA documentation</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">4</div>
+          <div>
+            <div class="cs-step-title">Journey Design — 14+ end-to-end flows in swim-lane format</div>
+            <p class="cs-step-body">Designed 14+ user journeys covering exploration, vehicle configuration, test drive booking, trade-in, finance application, and post-purchase. Each journey was documented in swim-lane format — user actions, system responses, emotional states, and enabling processes — giving both design and technology teams a shared working artefact. The enabling process documentation was particularly valued by the client's operations teams.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Swim-lane journey maps</span><span class="cs-step-tag">Phygital continuity</span><span class="cs-step-tag">Cross-channel flows</span><span class="cs-step-tag">Enabling process docs</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">5</div>
+          <div>
+            <div class="cs-step-title">AI Integration — Anchored to specific friction, not capability lists</div>
+            <p class="cs-step-body">Identified and designed AI-enabled moments across the customer lifecycle. Critically, each AI touchpoint was anchored to a specific research insight — smart vehicle matching emerged from buyers describing feeling overwhelmed by choice; conversational finance modelling came from the clear gap between interest and affordability confidence. All concepts were tested with UAE buyers before inclusion in the future-state recommendation.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">AI use-case scoping</span><span class="cs-step-tag">Concept testing</span><span class="cs-step-tag">Experience prototyping</span><span class="cs-step-tag">Stakeholder co-design</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-artefact">
+        <div class="cs-artefact-label">Process Artefact</div>
+        <div class="cs-artefact-title">IA documentation, journey maps, and experience principles available to walk through in interview — withheld from portfolio per NDA</div>
+      </div>
+    </div>
+
+    <!-- 04 OUTCOMES -->
+    <div class="cs-section">
+      <div class="cs-section-label">04 — What Happened</div>
+      <h2 class="cs-section-heading"><em>Directional outcomes</em> from the work.</h2>
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="cs-stat-num">14<sup>+</sup></div><div class="cs-stat-label">End-to-end journeys mapped across both brands and all channels</div></div>
+        <div class="cs-stat"><div class="cs-stat-num">2×</div><div class="cs-stat-label">Brand ecosystems redesigned simultaneously with distinct IA models</div></div>
+        <div class="cs-stat"><div class="cs-stat-num">~60<sup>%</sup></div><div class="cs-stat-label">Reduction in research synthesis time via custom AI tool built for the project</div></div>
+      </div>
+      <p class="cs-body" style="margin-top:2rem">The future-state frameworks, IA documentation, and journey maps became the foundational artefacts Al-Futtaim's internal teams used to <strong>brief engineering, plan roadmap prioritisation, and evaluate vendor capabilities</strong>. The design work moved upstream — it became the brief, not just a response to one.</p>
+      <p class="cs-body">The dual-brand approach — treating Toyota and Lexus as siblings with a shared skeleton but genuinely different spirits — was validated in client reviews and became a reference model for how the group approaches multi-brand digital strategy.</p>
+      <p class="cs-body" style="font-size:.75rem;color:var(--light)">Specific conversion metrics and business KPIs withheld per NDA. Available in discussion during interview.</p>
+    </div>
+
+    <!-- 05 REFLECTIONS -->
+    <div class="cs-section">
+      <div class="cs-section-label">05 — What I'd Do Differently</div>
+      <h2 class="cs-section-heading">Honest <em>reflections.</em></h2>
+      <div class="cs-reflections">
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Start phygital alignment in week one</div><p class="cs-reflection-body">Designing showroom-to-digital journeys exposed silos between Al-Futtaim's digital and in-dealership teams that only emerged mid-delivery. I'd push to bring dealership managers into the research and co-design phase from the start — not as informants, but as co-designers.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Prototype AI moments earlier</div><p class="cs-reflection-body">AI experience concepts were concept-tested relatively late. Earlier lo-fi prototyping would have surfaced the trust and transparency concerns UAE users had around AI recommendations — concerns that required a meaningful design pivot when they emerged.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Define success metrics at discovery, not delivery</div><p class="cs-reflection-body">Success metrics were defined reactively, after the design direction was set. Building measurable experience outcomes into the discovery phase — not just business outcomes — would have given the team stronger footing when prioritisation decisions got difficult late.</p></div></div>
+      </div>
+    </div>
+
+    <div class="cs-cta">
+      <p class="cs-cta-text">Want to walk through this project in detail?</p>
+      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Toyota%20%26%20Lexus" class="cs-cta-btn">Get in touch →</a>
+    </div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Client-specific research data, unreleased design artefacts, and business metrics are withheld per IBM iX × Al-Futtaim confidentiality agreements. Full documentation available to hiring managers on request.</div>
   </div>
-  
 </div>
 
-	</div>
-		</div>
-<!--
-<section class="summary_section">
-  <div class="summary_content">
-<div class="row">
-  <div class="col-md-6">
-    <img src="img/summary_img.png">
-      
+<!-- ═══════════════════════════════════════════
+     CASE STUDY 02 — AL GHURAIR PROPERTIES
+════════════════════════════════════════════ -->
+<div class="case-modal" id="cs-alghurair">
+  <div class="modal-nav">
+    <button class="modal-back" onclick="closeCase('cs-alghurair')">← Back to portfolio</button>
+    <span class="modal-breadcrumb">Case Study 02 of 03</span>
+    <div class="modal-nda"><span class="nda-dot"></span>NDA Compliant · Process only</div>
   </div>
-  <div class="col-md-6 summary_text">
-As a UX designer at IBM iX in Dubai, I strive to create user-friendly solutions that deliver results. My focus is on understanding the needs of users and using design thinking to create intuitive and satisfying experiences    
+  <div class="cs-wrap">
+    <div class="cs-eyebrow">
+      <span class="cs-tag">Internal Tool Design</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">AI-Enabled</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">Real Estate</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">2023–2024</span>
+    </div>
+    <h1 class="cs-title">Al Ghurair Properties —<br><em>AI Pricing</em><br>Intelligence Platform</h1>
+    <p class="cs-summary">Designing an AI-powered pricing scenario platform for senior management — enabling strategic forecasting and portfolio-wide price modelling across 50+ residential buildings and six unit types, replacing manual processes that made high-stakes decisions slow, opaque, and hard to defend in the boardroom.</p>
+    <div class="cs-meta-row">
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al Ghurair Group</div></div>
+      <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">UX Strategy Lead</div></div>
+      <div><div class="cs-meta-label">Primary Users</div><div class="cs-meta-value">Senior Management</div></div>
+      <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Research, Strategy, Tool Design</div></div>
+    </div>
+
+    <!-- 01 PROBLEM -->
+    <div class="cs-section">
+      <div class="cs-section-label">01 — The Problem</div>
+      <h2 class="cs-section-heading">High-stakes decisions. <em>Primitive tools.</em></h2>
+      <p class="cs-body">Al Ghurair Properties manages one of the UAE's largest residential real estate portfolios — 50+ buildings across Dubai, with pricing decisions affecting thousands of units. When I came in, senior leadership was making portfolio-wide pricing decisions using a patchwork of Excel spreadsheets, email chains, and institutional knowledge held by a handful of people.</p>
+      <p class="cs-body">The result: <strong>scenario planning was slow, inconsistent, and impossible to interrogate.</strong> Before a board presentation or a major repositioning decision, senior managers had no reliable way to model "what happens to occupancy and revenue if we move pricing by X% across this segment" — and no shared artefact to align their teams around. Decisions were made on gut feel backed by outdated reports.</p>
+      <div class="cs-two-col">
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">The Strategic Problem</div>
+          <div class="cs-insight-text">Senior management couldn't run credible scenarios before committing to a pricing direction. Every major decision required days of manual modelling by analysts — and still lacked confidence because the methodology wasn't visible or challengeable.</div>
+        </div>
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">The Design Opportunity</div>
+          <div class="cs-insight-text">If leadership could see outcome projections — occupancy impact, yield forecasts, competitive positioning — before making a call, the quality and speed of decisions would improve. The tool needed to make uncertainty legible, not just data visible.</div>
+        </div>
+      </div>
+      <div class="cs-pullquote">
+        <p>"The question wasn't how to visualise pricing data — it was how to make a consequential decision feel safe to make quickly, and defensible afterwards."</p>
+      </div>
+    </div>
+
+    <!-- 02 ROLE -->
+    <div class="cs-section">
+      <div class="cs-section-label">02 — My Role &amp; Constraints</div>
+      <h2 class="cs-section-heading">Leading strategy <em>and execution</em> for a high-trust user.</h2>
+      <p class="cs-body">I owned the full UX scope — from discovery research and stakeholder interviews through to the information architecture, interaction design, and handoff documentation. The primary user was senior management: executives and portfolio directors who needed to run pricing scenarios confidently, present them to boards, and align their teams around a shared view of the portfolio.</p>
+      <p class="cs-body">Designing for this user meant understanding <strong>how executives actually think during a forecasting exercise</strong> — what they need to see first, what level of granularity builds confidence versus creates noise, and how to surface AI recommendations in a way that supports rather than replaces their judgement.</p>
+      <div class="cs-context-box">
+        <h4>Key Constraints</h4>
+        <p>No existing design system to work from · Data complexity — 50+ buildings × 6 unit types × multiple pricing variables · Real-time integration requirements from legacy property management systems · Very high trust bar — errors in pricing had direct revenue impact · Users were senior, time-poor, and not tolerant of complex interfaces</p>
+      </div>
+    </div>
+
+    <!-- 03 APPROACH -->
+    <div class="cs-section">
+      <div class="cs-section-label">03 — How I Approached It</div>
+      <h2 class="cs-section-heading">Understanding the decision <em>before designing the tool.</em></h2>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div>
+            <div class="cs-step-title">Discovery — Mapping how pricing decisions actually get made</div>
+            <p class="cs-step-body">Conducted structured interviews with senior management to understand the real decision-making process — not the official process, but what actually happened. Built a Universal Journey Framework mapping the flow from market signal to scenario modelling to board presentation to implementation. The key finding: the bottleneck wasn't data, it was confidence. Leaders had access to plenty of numbers; they lacked a reliable way to translate those numbers into a defensible position.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Stakeholder interviews</span><span class="cs-step-tag">Decision journey mapping</span><span class="cs-step-tag">Universal Journey Framework</span><span class="cs-step-tag">Mental model analysis</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div>
+            <div class="cs-step-title">Strategy — Designing for decision confidence, not data completeness</div>
+            <p class="cs-step-body">The strategic insight that shaped everything: senior users didn't need more data, they needed better decisions. That's a fundamentally different design problem. I reframed the platform from a "pricing dashboard" to a "scenario confidence tool" — the job wasn't to show all available pricing information, it was to help a senior leader arrive at a position they could stand behind. Every design principle flowed from this reframe.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Strategic reframing</span><span class="cs-step-tag">Experience principles</span><span class="cs-step-tag">AI opportunity mapping</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div>
+            <div class="cs-step-title">Architecture — Outcomes first, inputs second</div>
+            <p class="cs-step-body">Designed the IA around the executive mental model: start with projected outcomes (occupancy, yield, revenue impact), then allow drill-down into the assumptions and variables driving them. This was the opposite of how the existing spreadsheet process worked — and exactly what concept testing confirmed senior users needed. The architecture made it possible to answer "what does this decision cost us?" before committing to it.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Platform IA</span><span class="cs-step-tag">Outcome-first hierarchy</span><span class="cs-step-tag">Navigation architecture</span><span class="cs-step-tag">Data hierarchy</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">4</div>
+          <div>
+            <div class="cs-step-title">AI Integration — Recommendations that support, not replace, judgement</div>
+            <p class="cs-step-body">Designed the AI pricing suggestion layer to augment senior decision-making, not automate it. The interaction model showed AI-generated recommendations alongside the reasoning — market comparables, occupancy trends, seasonal factors — so leaders could interrogate the logic before accepting or overriding it. Critically, the UI preserved the ability to override and record why, making every decision auditable. Trust came from explainability, not accuracy alone.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">AI recommendation design</span><span class="cs-step-tag">Explainability patterns</span><span class="cs-step-tag">Scenario modelling UX</span><span class="cs-step-tag">Human oversight design</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">5</div>
+          <div>
+            <div class="cs-step-title">Validation — Testing with senior stakeholders directly</div>
+            <p class="cs-step-body">Ran concept testing sessions with senior management — not proxies, the actual users. Key finding confirmed: the scenario view had to lead with projected outcome, not methodology. Leaders wanted to see "if we reprice this segment by 8%, here's projected occupancy and revenue impact" before seeing how the model arrived there. This inverted the initial design and became the defining structural decision of the platform.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Executive concept testing</span><span class="cs-step-tag">Usability testing</span><span class="cs-step-tag">Design iteration</span><span class="cs-step-tag">Stakeholder validation</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-artefact">
+        <div class="cs-artefact-label">Process Artefact</div>
+        <div class="cs-artefact-title">Universal Journey Framework, platform IA, and interaction design documentation available in interview — withheld per NDA</div>
+      </div>
+    </div>
+
+    <!-- 04 OUTCOMES -->
+    <div class="cs-section">
+      <div class="cs-section-label">04 — What Happened</div>
+      <h2 class="cs-section-heading"><em>What the work</em> made possible.</h2>
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="cs-stat-num">50<sup>+</sup></div><div class="cs-stat-label">Buildings mapped in the platform IA, across 6 unit types and multiple pricing variables</div></div>
+        <div class="cs-stat"><div class="cs-stat-num">Board</div><div class="cs-stat-label">Scenario interface adopted as the basis for executive pricing presentations</div></div>
+        <div class="cs-stat"><div class="cs-stat-num">Days<br><span style="font-size:1rem">→ hrs</span></div><div class="cs-stat-label">Target reduction in scenario modelling cycle for senior management</div></div>
+      </div>
+      <p class="cs-body" style="margin-top:2rem">The platform gave Al Ghurair's leadership team something they didn't have before: a shared, interrogable artefact for pricing decisions. The scenario planning interface became the basis for board-level presentations — <strong>the design work moved directly into the boardroom.</strong></p>
+      <p class="cs-body">The Universal Journey Framework I built for this project was adopted as a reusable methodology for subsequent Al Ghurair experience initiatives — extending the value of the design work beyond this single engagement.</p>
+      <p class="cs-body" style="font-size:.75rem;color:var(--light)">Revenue and occupancy impact metrics withheld per NDA. Available in discussion during interview.</p>
+    </div>
+
+    <!-- 05 REFLECTIONS -->
+    <div class="cs-section">
+      <div class="cs-section-label">05 — What I'd Do Differently</div>
+      <h2 class="cs-section-heading">Honest <em>reflections.</em></h2>
+      <div class="cs-reflections">
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Involve the data team in IA decisions from the start</div><p class="cs-reflection-body">Some information hierarchy decisions I made based on user research had to be revisited when engineering clarified what data was queryable in real-time versus batched. Earlier technical involvement would have saved two rounds of redesign on the scenario view — particularly the outcome projection layer.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Run executive concept testing in week three, not week eight</div><p class="cs-reflection-body">I built out a significant amount of the platform architecture before testing with senior users. The "outcomes before methodology" insight — which fundamentally reorganised the IA — only emerged when I put concepts in front of executives. That should happen early enough to shape the architecture, not after it.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Make AI explainability a scope requirement, not a design feature</div><p class="cs-reflection-body">The explainability layer — showing the reasoning behind AI recommendations — was initially scoped as a nice-to-have. It became foundational to user trust and had to be retrofitted. I'd advocate for it as a non-negotiable requirement from the first project brief, particularly for high-stakes decision-support tools.</p></div></div>
+      </div>
+    </div>
+
+    <div class="cs-cta">
+      <p class="cs-cta-text">Want to walk through the platform design?</p>
+      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Al%20Ghurair" class="cs-cta-btn">Get in touch →</a>
+    </div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Platform designs, pricing logic, and business performance data are withheld per Al Ghurair Group confidentiality agreements. Full documentation available to hiring managers on request.</div>
   </div>
 </div>
-</div>
-  
 
-</section>
-
-<section class="section_message">
-  <div class="message_content">
-    Designing with empathy, I dive deep into user research to uncover real problems, and through multiple iterations and user engagements, I craft intuitive, user-centered solutions that truly meet the needs of the people who will be using them.
+<!-- ═══════════════════════════════════════════
+     CASE STUDY 03 — BLUE APP
+════════════════════════════════════════════ -->
+<div class="case-modal" id="cs-blueapp">
+  <div class="modal-nav">
+    <button class="modal-back" onclick="closeCase('cs-blueapp')">← Back to portfolio</button>
+    <span class="modal-breadcrumb">Case Study 03 of 03</span>
+    <div class="modal-nda"><span class="nda-dot"></span>NDA Compliant · Process only</div>
   </div>
-</section>
--->
-<div class="mycontainer">
-<div class="section_heading" id="projects">
-<h2>My work</h2>
+  <div class="cs-wrap">
+    <div class="cs-eyebrow">
+      <span class="cs-tag">Consumer Product</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">Gamification</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">Retail</span><span class="cs-tag-sep">·</span>
+      <span class="cs-tag">2023</span>
+    </div>
+    <h1 class="cs-title">Blue App —<br><em>Gamification &amp;</em><br>Digital Identity System</h1>
+    <p class="cs-summary">Designing a gamification and avatar collectibles system for Al-Futtaim's retail super-app — creating an engagement layer that made loyalty feel personal, progressive, and genuinely rewarding rather than transactional. Core features are partially live; the engagement mechanics and identity system are in phased rollout.</p>
+    <div class="cs-meta-row">
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al-Futtaim Group</div></div>
+      <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Experience Designer</div></div>
+      <div><div class="cs-meta-label">Status</div><div class="cs-meta-value">Partially live · Phased rollout</div></div>
+      <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Research, Mechanics, Identity Design</div></div>
+    </div>
+
+    <!-- 01 PROBLEM -->
+    <div class="cs-section">
+      <div class="cs-section-label">01 — The Problem</div>
+      <h2 class="cs-section-heading">A loyalty programme that <em>felt like a loyalty programme.</em></h2>
+      <p class="cs-body">Blue App is Al-Futtaim Group's retail super-app — a single platform spanning brands across fashion, home, automotive, and more. The existing loyalty experience was purely transactional: points earned, points redeemed, with no emotional engagement and no reason for users to return beyond a pending reward.</p>
+      <p class="cs-body"><strong>Engagement metrics were flat.</strong> Users who collected points weren't returning to the app between purchase cycles — meaning the app had no presence in customers' daily digital lives, and Al-Futtaim had no channel for ongoing relationship-building outside a sale.</p>
+      <div class="cs-two-col">
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">The Business Problem</div>
+          <div class="cs-insight-text">Al-Futtaim needed the Blue App to become a daily habit, not an occasional transaction tool. A loyalty programme that only activates at point of purchase doesn't build brand affinity — it just delays it.</div>
+        </div>
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">The User Problem</div>
+          <div class="cs-insight-text">Users didn't feel like the app knew them. Points were anonymous and interchangeable — there was no sense of personal identity or progression that made one user's account feel different from another's.</div>
+        </div>
+      </div>
+      <div class="cs-pullquote">
+        <p>"Loyalty without identity is just a discount. The goal was to make engagement feel like self-expression."</p>
+      </div>
+    </div>
+
+    <!-- 02 ROLE -->
+    <div class="cs-section">
+      <div class="cs-section-label">02 — My Role &amp; Constraints</div>
+      <h2 class="cs-section-heading">Designing engagement mechanics <em>from first principles.</em></h2>
+      <p class="cs-body">I owned the full experience design for the gamification and avatar collectibles system — from user research and engagement mechanics definition through to the digital identity system design and handoff documentation. I worked alongside the product and engineering teams to ensure the design was buildable within the existing app architecture.</p>
+      <div class="cs-context-box">
+        <h4>Key Constraints</h4>
+        <p>Existing app architecture limiting certain interaction patterns · Highly diverse user base — UAE's multicultural demographic with very different expectations of "play" and reward · Risk of gamification feeling patronising to older or premium customer segments · No existing design language for identity or collectibles within the app</p>
+      </div>
+    </div>
+
+    <!-- 03 APPROACH -->
+    <div class="cs-section">
+      <div class="cs-section-label">03 — How I Approached It</div>
+      <h2 class="cs-section-heading">Mechanics before <em>aesthetics.</em></h2>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div>
+            <div class="cs-step-title">Discovery — What actually drives return behaviour?</div>
+            <p class="cs-step-body">Researched engagement patterns across successful loyalty and gamification systems — from retail (Starbucks, Nike) to gaming (Duolingo, Pokémon GO) to understand the underlying mechanics that drive habitual return. Conducted user interviews with Blue App users to understand their current relationship with the app and their expectations of reward and recognition. Key finding: UAE users responded strongly to status and social visibility, not just personal milestones.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">User interviews</span><span class="cs-step-tag">Gamification research</span><span class="cs-step-tag">Competitive analysis</span><span class="cs-step-tag">Behavioural pattern mapping</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div>
+            <div class="cs-step-title">Mechanics Design — The engagement loop before the interface</div>
+            <p class="cs-step-body">Designed the engagement mechanics before touching any visual design. Built out the core loop: earn actions (purchases, app interactions, brand engagement) → progression triggers → collectible unlocks → status signals → social visibility. Critically, the system was designed so that collectibles weren't random — they were tied to specific brand interactions, making each avatar piece a record of a real customer relationship with an Al-Futtaim brand.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Engagement loop design</span><span class="cs-step-tag">Reward mechanics</span><span class="cs-step-tag">Progression framework</span><span class="cs-step-tag">Collectible taxonomy</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div>
+            <div class="cs-step-title">Identity System — Avatar as personal expression</div>
+            <p class="cs-step-body">Designed a digital avatar system where each user builds a visual identity over time through their brand interactions. Avatars were customisable across a defined set of dimensions — body, expression, style, accessories — with collectible elements unlocking based on engagement history. The design system had to balance creative latitude for users with enough constraint to maintain visual coherence across a diverse set of Al-Futtaim brands and collectible categories.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Digital identity design</span><span class="cs-step-tag">Avatar system</span><span class="cs-step-tag">Collectible design framework</span><span class="cs-step-tag">Design system</span></div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">4</div>
+          <div>
+            <div class="cs-step-title">Concept Testing — Does the engagement loop actually engage?</div>
+            <p class="cs-step-body">Tested the mechanics and identity system with users from across Blue App's demographic range. The key tension I was testing for: did the gamification feel rewarding or patronising to older and premium segments? Finding: the collectible system worked well across ages when framed as "your brand history" rather than "playing a game." The framing shift — from game mechanics to personal record — was the critical design pivot that made the system work for the full user base.</p>
+            <div class="cs-step-tags"><span class="cs-step-tag">Concept testing</span><span class="cs-step-tag">Cross-segment validation</span><span class="cs-step-tag">Framing iteration</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-artefact">
+        <div class="cs-artefact-label">Process Artefact</div>
+        <div class="cs-artefact-title">Engagement mechanics framework, avatar system design, and collectible taxonomy available in interview — withheld per NDA</div>
+      </div>
+    </div>
+
+    <!-- 04 OUTCOMES -->
+    <div class="cs-section">
+      <div class="cs-section-label">04 — What Happened</div>
+      <h2 class="cs-section-heading">Partially live. <em>What's shipped and what it showed.</em></h2>
+      <p class="cs-body">Core features of the gamification and avatar system are live in Blue App, with remaining features in phased rollout. As a partially live project, full engagement metrics are still accumulating — but the design work established several things that weren't in place before launch:</p>
+      <div class="cs-two-col">
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">What shipped</div>
+          <div class="cs-insight-text">The core avatar identity system and initial collectible categories are live — giving users a visual identity tied to their brand interactions for the first time. The progression mechanics are running, with collectibles unlocking based on real engagement history.</div>
+        </div>
+        <div class="cs-insight-card">
+          <div class="cs-insight-label">What it enabled</div>
+          <div class="cs-insight-text">Blue App now has a loyalty layer that exists between purchase cycles — giving the app a presence in users' daily digital lives that doesn't depend on a transaction trigger. That was the core strategic objective, and the shipped features deliver it.</div>
+        </div>
+      </div>
+      <p class="cs-body" style="margin-top:1.5rem">The mechanics framework and collectible taxonomy were designed for extensibility — new Al-Futtaim brand partnerships can be added to the system without redesigning the core. This was deliberate: the design needed a longer shelf life than the initial launch scope, and it's proving out as rollout continues.</p>
+      <p class="cs-body" style="font-size:.75rem;color:var(--light)">Live engagement metrics and performance data withheld per NDA. Available in discussion during interview.</p>
+    </div>
+
+    <!-- 05 REFLECTIONS -->
+    <div class="cs-section">
+      <div class="cs-section-label">05 — What I'd Do Differently</div>
+      <h2 class="cs-section-heading">Honest <em>reflections.</em></h2>
+      <div class="cs-reflections">
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Define the metrics for success before design begins</div><p class="cs-reflection-body">What does "engagement" actually mean in measurable terms for this system — daily active users? return visit frequency? collectible completion rates? I'd want these defined and agreed with the product team before starting mechanics design, so every decision has a clear north star to test against.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Map the engineering constraints earlier</div><p class="cs-reflection-body">Some interaction patterns I designed for the avatar system had to be simplified at handoff due to technical constraints that weren't fully scoped at the start. A more thorough technical feasibility review mid-design would have prevented late-stage simplification.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Push for a pilot launch to validate the loop</div><p class="cs-reflection-body">Concept testing validates intent, not behaviour. I'd push for a limited pilot — even a small user group — before full launch, specifically to validate that the engagement loop creates genuine return behaviour and not just initial curiosity.</p></div></div>
+      </div>
+    </div>
+
+    <div class="cs-cta">
+      <p class="cs-cta-text">Want to walk through the engagement system design?</p>
+      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Blue%20App" class="cs-cta-btn">Get in touch →</a>
+    </div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Avatar designs, collectible visuals, and unreleased product features are withheld per Al-Futtaim Group confidentiality agreements. Full design documentation available to hiring managers on request.</div>
   </div>
-	<div class="row">
-		<!--<div class=" col-lg-4 col-md-6 col-sm-12 boxstyle">
-    
-  
-  <a class="project-cover" href="govcc.html" >
-            <div class="cover-content-container">
-              <div class="cover-image-wrap">
-                <div class="cover-image">
-                    <div class="cover cover-normal">
-
-            <img class="img-fluid" src="img/govcc_cover.png"  >
-                              </div>
-                </div>
-              </div>
-              <div class="details-wrap">
-                <div class="details">
-                  <div class="details-inner">
-                      <div class="title preserve-whitespace">Designing Government Control Center Dashboard</div>
-                      <div class="date">2022</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-</div>-->
-			<div class=" col-lg-4 col-md-6 col-xs-12 boxstyle">
-		
-	
-		<a class="project-cover" href="government_dashboard.html" >
-            <div class="cover-content-container">
-              <div class="cover-image-wrap">
-                <div class="cover-image">
-                    <div class="cover cover-normal">
-
-            <img class="img-fluid" src="img/lt_cover.png"  >
-                              </div>
-                </div>
-              </div>
-              <div class="details-wrap">
-                <div class="details">
-                  <div class="details-inner">
-                      <div class="title preserve-whitespace">South African Government Service Delivery Dashboard</div>
-                      <div class="date">2021</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
 </div>
 
-        <div class=" col-lg-4 col-md-6 col-sm-12 boxstyle">
-    
-  
-  <a class="project-cover" href="smrt.html" >
-            <div class="cover-content-container">
-              <div class="cover-image-wrap">
-                <div class="cover-image">
-                    <div class="cover cover-normal">
+<!-- ═══════ SCRIPT ═══════ -->
+<script>
+const PASSWORD = 'melbourne2025';
+let pendingProject = null;
 
-            <img class="img-fluid" src="img/smrt_cover.png"  >
-                              </div>
-                </div>
-              </div>
-              <div class="details-wrap">
-                <div class="details">
-                  <div class="details-inner">
-                      <div class="title preserve-whitespace">Smart city business discovery</div>
-                      <div class="date">2021</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-</div>
-	<div class=" col-lg-4 col-md-6 col-sm-12 boxstyle">
-		
-	
-		<a class="project-cover" href="eatin.html" >
-            <div class="cover-content-container">
-              <div class="cover-image-wrap">
-                <div class="cover-image">
-                    <div class="cover cover-normal">
+const projectMap = {
+  toyota:    { title: 'Toyota &amp; Lexus UAE',       modal: 'cs-toyota'    },
+  alghurair: { title: 'Al Ghurair Properties',        modal: 'cs-alghurair' },
+  blueapp:   { title: 'Blue App — Al-Futtaim',        modal: 'cs-blueapp'   }
+};
 
-            <img class="img-fluid" src="img/Eatin_cover.png"  >
-                              </div>
-                </div>
-              </div>
-              <div class="details-wrap">
-                <div class="details">
-                  <div class="details-inner">
-                      <div class="title preserve-whitespace">Eatin Mobile App Design</div>
-                      <div class="date">2020</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-</div>
+function openGate(project) {
+  pendingProject = project;
+  const p = projectMap[project];
+  document.getElementById('gate-title').innerHTML = p.title;
+  document.getElementById('gate-input').value = '';
+  document.getElementById('gate-error').classList.remove('show');
+  document.getElementById('gate-wrap').classList.remove('error');
+  const o = document.getElementById('gate-overlay');
+  o.classList.add('active');
+  requestAnimationFrame(() => {
+    o.classList.add('visible');
+    setTimeout(() => document.getElementById('gate-input').focus(), 100);
+  });
+}
 
+function closeGate() {
+  const o = document.getElementById('gate-overlay');
+  o.classList.remove('visible');
+  setTimeout(() => o.classList.remove('active'), 300);
+  pendingProject = null;
+}
 
-  
+function checkPassword() {
+  const val = document.getElementById('gate-input').value.trim();
+  if (val === PASSWORD) {
+    const proj = pendingProject;
+    closeGate();
+    setTimeout(() => openCase(proj), 320);
+  } else {
+    document.getElementById('gate-wrap').classList.add('error');
+    document.getElementById('gate-error').classList.add('show');
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+    setTimeout(() => {
+      document.getElementById('gate-wrap').classList.remove('error');
+      document.getElementById('gate-error').classList.remove('show');
+    }, 2500);
+  }
+}
 
-	<div class=" col-lg-4 col-md-6 col-sm-12 boxstyle">
-		
-	
-		<a class="project-cover" href="xpert.html" >
-            <div class="cover-content-container">
-              <div class="cover-image-wrap">
-                <div class="cover-image">
-                    <div class="cover cover-normal">
+function openCase(project) {
+  const id = projectMap[project].modal;
+  const m = document.getElementById(id);
+  m.classList.add('active');
+  m.classList.remove('scrolled');
+  m.scrollTop = 0;
+  requestAnimationFrame(() => m.classList.add('visible'));
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => { document.body.style.overflow = ''; }, 50);
 
-            <img class="img-fluid" src="img/xpert_cover.png"  >
-                              </div>
-                </div>
-              </div>
-              <div class="details-wrap">
-                <div class="details">
-                  <div class="details-inner">
-                      <div class="title preserve-whitespace">Xpert channel Education portal Design</div>
-                      <div class="date">2020</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
+  // Pastel → white on modal scroll
+  m._scrollHandler = function() {
+    if (m.scrollTop > 80) m.classList.add('scrolled');
+    else m.classList.remove('scrolled');
+  };
+  m.addEventListener('scroll', m._scrollHandler, { passive: true });
+}
 
+function closeCase(id) {
+  const m = document.getElementById(id);
+  m.classList.remove('visible');
+  if (m._scrollHandler) {
+    m.removeEventListener('scroll', m._scrollHandler);
+    m._scrollHandler = null;
+  }
+  setTimeout(() => {
+    m.classList.remove('active');
+    m.classList.remove('scrolled');
+  }, 400);
+}
 
-</div>
+document.getElementById('gate-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeGate();
+});
 
-	</div>
-</div>
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  ['cs-toyota','cs-alghurair','cs-blueapp'].forEach(id => {
+    if (document.getElementById(id).classList.contains('active')) closeCase(id);
+  });
+  if (document.getElementById('gate-overlay').classList.contains('active')) closeGate();
+});
 
-
-
-<section class="myfooter">
-<div class="footer_content">
-  <h1>Let's Connect</h1></br>
-  <p>Lets catchup for a coffee chat if you want to know more about my work. 
-  </br>Feel free to email me at <b>alifnoushad.96@gmail.com.</b></p>
-</br>
-<span >
-     
-    <a style="color:#23423C !important;" href="https://www.linkedin.com/in/alifnoushad/" class="fa fa-linkedin"></a>
-        
-     <a style="color:#23423C !important;" href="https://dribbble.com/AlifNoushad" class="fa fa-dribbble"></a>
-        
-     <a style="color:#23423C !important;" href="https://www.behance.net/alifnoushad" class="fa fa-behance"></a>
- 
-    </span>
-</div>
-
-</section>
-
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	</body>
-	</html>
+// Pastel → white on scroll
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 80) {
+    document.body.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('scrolled');
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
