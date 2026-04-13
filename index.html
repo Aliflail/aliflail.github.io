@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alif — Senior Experience Designer</title>
+<title>Alif — Design Lead</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -15,8 +15,9 @@
   --mono:'Jost',sans-serif;--serif:'Playfair Display',serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--mono);font-weight:300;color:var(--ink);background:#ede9e3;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background 0.7s ease}
-body.scrolled{background:#ffffff}
+html{background:#EDE9E3;transition:background 0.7s ease}
+body{font-family:var(--mono);font-weight:300;color:var(--ink);background:transparent;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html.scrolled{background:#ffffff}
 
 /* ── GLOBAL ── */
 .label{font-size:.65rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--light)}
@@ -95,7 +96,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
 .nda-dot{width:5px;height:5px;border-radius:50%;background:#f39c12;display:inline-block}
 
 /* ═══════ CASE STUDY MODAL ═══════ */
-.case-modal{position:fixed;inset:0;background:#ede9e3;z-index:300;display:none;overflow-y:auto;opacity:0;transform:translateY(24px);transition:opacity .4s ease,transform .4s ease,background 0.7s ease}
+.case-modal{position:fixed;inset:0;background:#EDE9E3;z-index:300;display:none;overflow-y:auto;opacity:0;transform:translateY(24px);transition:opacity .4s ease,transform .4s ease,background 0.7s ease}
 .case-modal.active{display:block}
 .case-modal.visible{opacity:1;transform:translateY(0)}
 .case-modal.scrolled{background:#ffffff}
@@ -180,31 +181,68 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
   .cs-two-col{grid-template-columns:1fr}
   .cs-cta{flex-direction:column}
 }
+
+/* ── CURSOR & RIPPLES ── */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+#cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s, width 0.2s ease, height 0.2s ease;
+  will-change: left, top;
+}
+#cursor.visible { opacity: 1; }
+#cursor.hovered {
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+}
+#ripple-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+@media (pointer: coarse) {
+  #cursor, #ripple-canvas { display: none; }
+}
 </style>
 </head>
 <body>
+<canvas id="ripple-canvas"></canvas>
+<div id="cursor"></div>
 
 <!-- ═══════ MAIN SITE ═══════ -->
 <div id="main-site">
   <nav>
-    <a href="#" class="nav-name">Alif</a>
+    <a href="#" class="nav-name">Alif Noushad</a>
     <ul class="nav-right">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="mailto:hello@alifdesigns.com">Contact</a></li>
-      <li><a href="resume.pdf" download style="color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:1px">Resume ↓</a></li>
+      <li><a href="Alif_Noushad_Resume_2026.pdf" download style="color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:1px">Resume ↓</a></li>
     </ul>
   </nav>
 
   <header class="hero">
-    <div class="hero-tag"><span class="label">Senior Experience Designer</span></div>
-    <h1 class="hero-headline">Designing for humans,<br><em>at enterprise scale.</em></h1>
-    <p class="hero-bio">I work at the intersection of UX strategy, service design, and AI-enabled experience — helping organisations think clearly about what their customers actually need before deciding how to build it. Based in Dubai with IBM iX Studio, pursuing senior design and experience strategy roles in Melbourne.</p>
+    <div class="hero-tag"><span class="label">Design Lead · UX Design &amp; Strategy</span></div>
+    <h1 class="hero-headline">Designing <em>Clarity.</em><br>from complexity</h1>
+    <p class="hero-bio">I work at the intersection of UX strategy, UX design, and AI-enabled experience — helping organisations think clearly about what their customers actually need before deciding how to build it. Based in Dubai with IBM iX Studio, pursuing senior design and experience strategy roles in Melbourne.</p>
     <div class="focus-areas">
+      <span class="focus-pill">Design Lead</span>
       <span class="focus-pill">UX Strategy</span>
+      <span class="focus-pill">UX Design</span>
+      <span class="focus-pill">UI Design</span>
       <span class="focus-pill">Service Design</span>
-      <span class="focus-pill">AI Experience Design</span>
-      <span class="focus-pill">Information Architecture</span>
       <span class="focus-pill">Enterprise Product Design</span>
     </div>
   </header>
@@ -218,12 +256,12 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <div class="project-row" onclick="openGate('toyota')">
         <div class="proj-main">
           <div class="proj-index">01</div>
-          <div class="proj-name">Toyota &amp; Lexus UAE</div>
+          <div class="proj-name">Dual Auto Brands — UAE</div>
           <div class="proj-scope">End-to-end digital transformation across two automotive brands — experience strategy, IA, 14+ journey maps, and AI integration design.</div>
         </div>
         <div>
           <div class="proj-meta-label">Client</div>
-          <div class="proj-meta-val">Al-Futtaim × IBM iX</div>
+          <div class="proj-meta-val">Automotive Group × IBM iX</div>
         </div>
         <div>
           <div class="proj-meta-label">My Role</div>
@@ -237,12 +275,12 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <div class="project-row" onclick="openGate('alghurair')">
         <div class="proj-main">
           <div class="proj-index">02</div>
-          <div class="proj-name">Al Ghurair Properties</div>
+          <div class="proj-name">UAE Real Estate Developer</div>
           <div class="proj-scope">AI-powered pricing intelligence platform for senior management — enabling strategic scenario planning and forecasting across a 50+ building residential portfolio.</div>
         </div>
         <div>
           <div class="proj-meta-label">Client</div>
-          <div class="proj-meta-val">Al Ghurair Group</div>
+          <div class="proj-meta-val">Real Estate Group</div>
         </div>
         <div>
           <div class="proj-meta-label">My Role</div>
@@ -256,12 +294,12 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <div class="project-row" onclick="openGate('blueapp')">
         <div class="proj-main">
           <div class="proj-index">03</div>
-          <div class="proj-name">Blue App — Al-Futtaim</div>
+          <div class="proj-name">Retail Super-App</div>
           <div class="proj-scope">Gamification and avatar collectibles system for a retail super-app — engagement mechanics, loyalty UX, and digital identity design. Partially live.</div>
         </div>
         <div>
           <div class="proj-meta-label">Client</div>
-          <div class="proj-meta-val">Al-Futtaim Group</div>
+          <div class="proj-meta-val">Retail Group</div>
         </div>
         <div>
           <div class="proj-meta-label">My Role</div>
@@ -331,10 +369,10 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <span class="cs-tag">2024–2025</span><span class="cs-tag-sep">·</span>
       <span class="cs-tag">IBM iX Studio Dubai</span>
     </div>
-    <h1 class="cs-title">Toyota &amp; Lexus UAE —<br><em>Digital Experience</em><br>Transformation</h1>
+    <h1 class="cs-title">Dual Auto Brands UAE —<br><em>Digital Experience</em><br>Transformation</h1>
     <p class="cs-summary">Redesigning two flagship automotive digital ecosystems from fragmented touchpoints into cohesive, AI-enabled customer journeys — across 14+ mapped experiences, two distinct brand personalities, and a shared technology platform.</p>
     <div class="cs-meta-row">
-      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al-Futtaim Group × IBM iX</div></div>
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Automotive Group × IBM iX</div></div>
       <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Senior Experience Designer</div></div>
       <div><div class="cs-meta-label">Duration</div><div class="cs-meta-value">12 months</div></div>
       <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Strategy, IA, Journeys, AI Design</div></div>
@@ -344,31 +382,31 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
     <div class="cs-section">
       <div class="cs-section-label">01 — The Problem</div>
       <h2 class="cs-section-heading">Two iconic brands. <em>One fractured digital experience.</em></h2>
-      <p class="cs-body">Al-Futtaim Group is the exclusive distributor of Toyota and Lexus in the UAE. Their digital estates had grown organically over years, producing <strong>disconnected touchpoints, unclear navigation paths, and broken handoffs</strong> across the pre-purchase funnel. Customers exploring a vehicle online faced a smooth configuration experience that dead-ended before finance; test drive bookings that didn't connect to showroom systems; and no continuity between digital research and in-dealership conversation.</p>
+      <p class="cs-body">The client is the exclusive distributor of two automotive brands in the UAE. Their digital estates had grown organically over years, producing <strong>disconnected touchpoints, unclear navigation paths, and broken handoffs</strong> across the pre-purchase funnel. Customers exploring a vehicle online faced a smooth configuration experience that dead-ended before finance; test drive bookings that didn't connect to showroom systems; and no continuity between digital research and in-dealership conversation.</p>
       <div class="cs-two-col">
         <div class="cs-insight-card">
-          <div class="cs-insight-label">User Pain — Toyota</div>
+          <div class="cs-insight-label">User Pain — Mass-Market Brand</div>
           <div class="cs-insight-text">Buyers were abandoning finance journeys at high rates. Research showed the gap between "I like this car" and "I know I can afford this car" was never bridged digitally — customers left to figure it out themselves.</div>
         </div>
         <div class="cs-insight-card">
-          <div class="cs-insight-label">User Pain — Lexus</div>
-          <div class="cs-insight-text">Premium buyers expected a concierge-quality experience. Instead they encountered the same transactional flows as volume Toyota buyers — eroding brand perception before a single conversation with a sales team.</div>
+          <div class="cs-insight-label">User Pain — Premium Brand</div>
+          <div class="cs-insight-text">Premium buyers expected a concierge-quality experience. Instead they encountered the same transactional flows as volume mass-market buyers — eroding brand perception before a single conversation with a sales team.</div>
         </div>
       </div>
       <div class="cs-pullquote">
         <p>"The challenge wasn't designing better screens — it was architecting the connective tissue between a showroom visit, a WhatsApp enquiry, an online configuration, and a finance application."</p>
       </div>
-      <p class="cs-body">The added complexity: Toyota and Lexus share infrastructure but serve fundamentally different customers. Any solution had to maintain genuine brand distinction while achieving system efficiency — a tension that shaped every design decision on the project.</p>
+      <p class="cs-body">The added complexity: both brands share infrastructure but serve fundamentally different customers. Any solution had to maintain genuine brand distinction while achieving system efficiency — a tension that shaped every design decision on the project.</p>
     </div>
 
     <!-- 02 ROLE -->
     <div class="cs-section">
       <div class="cs-section-label">02 — My Role &amp; Constraints</div>
       <h2 class="cs-section-heading">What I owned, <em>and what made it hard.</em></h2>
-      <p class="cs-body">I was the lead experience designer on both brands simultaneously — working within IBM iX's delivery structure alongside strategy, content, and technology workstreams. I owned the <strong>experience vision, information architecture, journey design, AI integration scoping, and client-facing strategic communication</strong> across both toyota.ae and lexus.ae.</p>
+      <p class="cs-body">I was the lead experience designer on both brands simultaneously — working within IBM iX's delivery structure alongside strategy, content, and technology workstreams. I owned the <strong>experience vision, information architecture, journey design, AI integration scoping, and client-facing strategic communication</strong> across both brand sites.</p>
       <div class="cs-context-box">
         <h4>Key Constraints</h4>
-        <p>Legacy technology platform with limited flexibility · Competing priorities between Al-Futtaim's marketing and digital teams · Compressed delivery timeline · Designing for the UAE's multicultural, mobile-first, high-consideration buying context — not a Western template · Dual-brand scope with a single design resource</p>
+        <p>Legacy technology platform with limited flexibility · Competing priorities between the client's marketing and digital teams · Compressed delivery timeline · Designing for the UAE's multicultural, mobile-first, high-consideration buying context — not a Western template · Dual-brand scope with a single design resource</p>
       </div>
       <p class="cs-body"><strong>NDA note:</strong> Specific wireframes, unreleased UI, and client research data are withheld. What follows describes process, methodology, and strategic framing only.</p>
     </div>
@@ -382,7 +420,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">1</div>
           <div>
             <div class="cs-step-title">Discovery — Understanding the actual customer</div>
-            <p class="cs-step-body">Conducted qualitative interviews with UAE-based car buyers across both brand segments — first-time buyers, upgrade customers, fleet purchasers, premium Lexus buyers. Ran heuristic evaluations and session analysis across both live sites. Synthesised findings using a custom AI research tool I built specifically for the project, reducing analysis time by approximately 60% and improving insight consistency across the team.</p>
+            <p class="cs-step-body">Conducted qualitative interviews with UAE-based car buyers across both brand segments — first-time buyers, upgrade customers, fleet purchasers, premium buyers. Ran heuristic evaluations and session analysis across both live sites. Synthesised findings using a custom AI research tool I built specifically for the project, reducing analysis time by approximately 60% and improving insight consistency across the team.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Qualitative interviews</span><span class="cs-step-tag">Heuristic evaluation</span><span class="cs-step-tag">Session analysis</span><span class="cs-step-tag">Persona development</span><span class="cs-step-tag">AI synthesis tool</span></div>
           </div>
         </div>
@@ -390,7 +428,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">2</div>
           <div>
             <div class="cs-step-title">Strategy — Defining what "distinct" means at the system level</div>
-            <p class="cs-step-body">Authored experience principles and a future-state vision for both brands. The core strategic question was: what does "same system, different spirit" mean in practice? Toyota required warmth, accessibility, and family-first framing. Lexus required restraint, refinement, and a concierge-level digital feel. I built this distinction into navigation language, page hierarchy, interaction patterns, and even the tone of error states — not just visual design.</p>
+            <p class="cs-step-body">Authored experience principles and a future-state vision for both brands. The core strategic question was: what does "same system, different spirit" mean in practice? The mass-market brand required warmth, accessibility, and family-first framing. The premium brand required restraint, refinement, and a concierge-level digital feel. I built this distinction into navigation language, page hierarchy, interaction patterns, and even the tone of error states — not just visual design.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Experience principles</span><span class="cs-step-tag">Brand distinction framework</span><span class="cs-step-tag">Future-state vision</span><span class="cs-step-tag">Stakeholder workshops</span></div>
           </div>
         </div>
@@ -398,7 +436,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">3</div>
           <div>
             <div class="cs-step-title">Architecture — Rebuilding from customer intent, not org structure</div>
-            <p class="cs-step-body">Rebuilt the IA models for toyota.ae and lexus.ae from first principles. Rather than reorganising existing content, I restructured around how someone actually thinks about buying a car — not how Al-Futtaim's internal teams are organised. Produced detailed site maps, taxonomy documentation, and navigation system specs for both brands, with explicit rationale for every structural decision.</p>
+            <p class="cs-step-body">Rebuilt the IA models for both brand sites from first principles. Rather than reorganising existing content, I restructured around how someone actually thinks about buying a car — not how the client's internal teams are organised. Produced detailed site maps, taxonomy documentation, and navigation system specs for both brands, with explicit rationale for every structural decision.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Site architecture</span><span class="cs-step-tag">Navigation design</span><span class="cs-step-tag">Content taxonomy</span><span class="cs-step-tag">IA documentation</span></div>
           </div>
         </div>
@@ -434,8 +472,8 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
         <div class="cs-stat"><div class="cs-stat-num">2×</div><div class="cs-stat-label">Brand ecosystems redesigned simultaneously with distinct IA models</div></div>
         <div class="cs-stat"><div class="cs-stat-num">~60<sup>%</sup></div><div class="cs-stat-label">Reduction in research synthesis time via custom AI tool built for the project</div></div>
       </div>
-      <p class="cs-body" style="margin-top:2rem">The future-state frameworks, IA documentation, and journey maps became the foundational artefacts Al-Futtaim's internal teams used to <strong>brief engineering, plan roadmap prioritisation, and evaluate vendor capabilities</strong>. The design work moved upstream — it became the brief, not just a response to one.</p>
-      <p class="cs-body">The dual-brand approach — treating Toyota and Lexus as siblings with a shared skeleton but genuinely different spirits — was validated in client reviews and became a reference model for how the group approaches multi-brand digital strategy.</p>
+      <p class="cs-body" style="margin-top:2rem">The future-state frameworks, IA documentation, and journey maps became the foundational artefacts the client's internal teams used to <strong>brief engineering, plan roadmap prioritisation, and evaluate vendor capabilities</strong>. The design work moved upstream — it became the brief, not just a response to one.</p>
+      <p class="cs-body">The dual-brand approach — treating both brands as siblings with a shared skeleton but genuinely different spirits — was validated in client reviews and became a reference model for how the group approaches multi-brand digital strategy.</p>
       <p class="cs-body" style="font-size:.75rem;color:var(--light)">Specific conversion metrics and business KPIs withheld per NDA. Available in discussion during interview.</p>
     </div>
 
@@ -444,7 +482,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <div class="cs-section-label">05 — What I'd Do Differently</div>
       <h2 class="cs-section-heading">Honest <em>reflections.</em></h2>
       <div class="cs-reflections">
-        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Start phygital alignment in week one</div><p class="cs-reflection-body">Designing showroom-to-digital journeys exposed silos between Al-Futtaim's digital and in-dealership teams that only emerged mid-delivery. I'd push to bring dealership managers into the research and co-design phase from the start — not as informants, but as co-designers.</p></div></div>
+        <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Start phygital alignment in week one</div><p class="cs-reflection-body">Designing showroom-to-digital journeys exposed silos between the client's digital and in-dealership teams that only emerged mid-delivery. I'd push to bring dealership managers into the research and co-design phase from the start — not as informants, but as co-designers.</p></div></div>
         <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Prototype AI moments earlier</div><p class="cs-reflection-body">AI experience concepts were concept-tested relatively late. Earlier lo-fi prototyping would have surfaced the trust and transparency concerns UAE users had around AI recommendations — concerns that required a meaningful design pivot when they emerged.</p></div></div>
         <div class="cs-reflection"><div class="cs-reflection-arrow">→</div><div><div class="cs-reflection-title">Define success metrics at discovery, not delivery</div><p class="cs-reflection-body">Success metrics were defined reactively, after the design direction was set. Building measurable experience outcomes into the discovery phase — not just business outcomes — would have given the team stronger footing when prioritisation decisions got difficult late.</p></div></div>
       </div>
@@ -452,9 +490,9 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
 
     <div class="cs-cta">
       <p class="cs-cta-text">Want to walk through this project in detail?</p>
-      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Toyota%20%26%20Lexus" class="cs-cta-btn">Get in touch →</a>
+      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Automotive%20Brands" class="cs-cta-btn">Get in touch →</a>
     </div>
-    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Client-specific research data, unreleased design artefacts, and business metrics are withheld per IBM iX × Al-Futtaim confidentiality agreements. Full documentation available to hiring managers on request.</div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Client-specific research data, unreleased design artefacts, and business metrics are withheld per IBM iX confidentiality agreements. Full documentation available to hiring managers on request.</div>
   </div>
 </div>
 
@@ -474,10 +512,10 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <span class="cs-tag">Real Estate</span><span class="cs-tag-sep">·</span>
       <span class="cs-tag">2023–2024</span>
     </div>
-    <h1 class="cs-title">Al Ghurair Properties —<br><em>AI Pricing</em><br>Intelligence Platform</h1>
+    <h1 class="cs-title">UAE Real Estate Developer —<br><em>AI Pricing</em><br>Intelligence Platform</h1>
     <p class="cs-summary">Designing an AI-powered pricing scenario platform for senior management — enabling strategic forecasting and portfolio-wide price modelling across 50+ residential buildings and six unit types, replacing manual processes that made high-stakes decisions slow, opaque, and hard to defend in the boardroom.</p>
     <div class="cs-meta-row">
-      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al Ghurair Group</div></div>
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Regional Real Estate Group</div></div>
       <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">UX Strategy Lead</div></div>
       <div><div class="cs-meta-label">Primary Users</div><div class="cs-meta-value">Senior Management</div></div>
       <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Research, Strategy, Tool Design</div></div>
@@ -487,7 +525,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
     <div class="cs-section">
       <div class="cs-section-label">01 — The Problem</div>
       <h2 class="cs-section-heading">High-stakes decisions. <em>Primitive tools.</em></h2>
-      <p class="cs-body">Al Ghurair Properties manages one of the UAE's largest residential real estate portfolios — 50+ buildings across Dubai, with pricing decisions affecting thousands of units. When I came in, senior leadership was making portfolio-wide pricing decisions using a patchwork of Excel spreadsheets, email chains, and institutional knowledge held by a handful of people.</p>
+      <p class="cs-body">The client manages one of the UAE's largest residential real estate portfolios — 50+ buildings across Dubai, with pricing decisions affecting thousands of units. When I came in, senior leadership was making portfolio-wide pricing decisions using a patchwork of Excel spreadsheets, email chains, and institutional knowledge held by a handful of people.</p>
       <p class="cs-body">The result: <strong>scenario planning was slow, inconsistent, and impossible to interrogate.</strong> Before a board presentation or a major repositioning decision, senior managers had no reliable way to model "what happens to occupancy and revenue if we move pricing by X% across this segment" — and no shared artefact to align their teams around. Decisions were made on gut feel backed by outdated reports.</p>
       <div class="cs-two-col">
         <div class="cs-insight-card">
@@ -577,8 +615,8 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
         <div class="cs-stat"><div class="cs-stat-num">Board</div><div class="cs-stat-label">Scenario interface adopted as the basis for executive pricing presentations</div></div>
         <div class="cs-stat"><div class="cs-stat-num">Days<br><span style="font-size:1rem">→ hrs</span></div><div class="cs-stat-label">Target reduction in scenario modelling cycle for senior management</div></div>
       </div>
-      <p class="cs-body" style="margin-top:2rem">The platform gave Al Ghurair's leadership team something they didn't have before: a shared, interrogable artefact for pricing decisions. The scenario planning interface became the basis for board-level presentations — <strong>the design work moved directly into the boardroom.</strong></p>
-      <p class="cs-body">The Universal Journey Framework I built for this project was adopted as a reusable methodology for subsequent Al Ghurair experience initiatives — extending the value of the design work beyond this single engagement.</p>
+      <p class="cs-body" style="margin-top:2rem">The platform gave the client's leadership team something they didn't have before: a shared, interrogable artefact for pricing decisions. The scenario planning interface became the basis for board-level presentations — <strong>the design work moved directly into the boardroom.</strong></p>
+      <p class="cs-body">The Universal Journey Framework I built for this project was adopted as a reusable methodology for subsequent client experience initiatives — extending the value of the design work beyond this single engagement.</p>
       <p class="cs-body" style="font-size:.75rem;color:var(--light)">Revenue and occupancy impact metrics withheld per NDA. Available in discussion during interview.</p>
     </div>
 
@@ -595,9 +633,9 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
 
     <div class="cs-cta">
       <p class="cs-cta-text">Want to walk through the platform design?</p>
-      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Al%20Ghurair" class="cs-cta-btn">Get in touch →</a>
+      <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Real%20Estate%20Project" class="cs-cta-btn">Get in touch →</a>
     </div>
-    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Platform designs, pricing logic, and business performance data are withheld per Al Ghurair Group confidentiality agreements. Full documentation available to hiring managers on request.</div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Platform designs, pricing logic, and business performance data are withheld per client confidentiality agreements. Full documentation available to hiring managers on request.</div>
   </div>
 </div>
 
@@ -617,10 +655,10 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <span class="cs-tag">Retail</span><span class="cs-tag-sep">·</span>
       <span class="cs-tag">2023</span>
     </div>
-    <h1 class="cs-title">Blue App —<br><em>Gamification &amp;</em><br>Digital Identity System</h1>
-    <p class="cs-summary">Designing a gamification and avatar collectibles system for Al-Futtaim's retail super-app — creating an engagement layer that made loyalty feel personal, progressive, and genuinely rewarding rather than transactional. Core features are partially live; the engagement mechanics and identity system are in phased rollout.</p>
+    <h1 class="cs-title">Retail Super-App —<br><em>Gamification &amp;</em><br>Digital Identity System</h1>
+    <p class="cs-summary">Designing a gamification and avatar collectibles system for a regional retail super-app — creating an engagement layer that made loyalty feel personal, progressive, and genuinely rewarding rather than transactional. Core features are partially live; the engagement mechanics and identity system are in phased rollout.</p>
     <div class="cs-meta-row">
-      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Al-Futtaim Group</div></div>
+      <div><div class="cs-meta-label">Client</div><div class="cs-meta-value">Retail Group</div></div>
       <div><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Experience Designer</div></div>
       <div><div class="cs-meta-label">Status</div><div class="cs-meta-value">Partially live · Phased rollout</div></div>
       <div><div class="cs-meta-label">Scope</div><div class="cs-meta-value">Research, Mechanics, Identity Design</div></div>
@@ -630,12 +668,12 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
     <div class="cs-section">
       <div class="cs-section-label">01 — The Problem</div>
       <h2 class="cs-section-heading">A loyalty programme that <em>felt like a loyalty programme.</em></h2>
-      <p class="cs-body">Blue App is Al-Futtaim Group's retail super-app — a single platform spanning brands across fashion, home, automotive, and more. The existing loyalty experience was purely transactional: points earned, points redeemed, with no emotional engagement and no reason for users to return beyond a pending reward.</p>
-      <p class="cs-body"><strong>Engagement metrics were flat.</strong> Users who collected points weren't returning to the app between purchase cycles — meaning the app had no presence in customers' daily digital lives, and Al-Futtaim had no channel for ongoing relationship-building outside a sale.</p>
+      <p class="cs-body">The app is a retail super-app spanning brands across fashion, home, automotive, and more. The existing loyalty experience was purely transactional: points earned, points redeemed, with no emotional engagement and no reason for users to return beyond a pending reward.</p>
+      <p class="cs-body"><strong>Engagement metrics were flat.</strong> Users who collected points weren't returning to the app between purchase cycles — meaning the app had no presence in customers' daily digital lives, and the client had no channel for ongoing relationship-building outside a sale.</p>
       <div class="cs-two-col">
         <div class="cs-insight-card">
           <div class="cs-insight-label">The Business Problem</div>
-          <div class="cs-insight-text">Al-Futtaim needed the Blue App to become a daily habit, not an occasional transaction tool. A loyalty programme that only activates at point of purchase doesn't build brand affinity — it just delays it.</div>
+          <div class="cs-insight-text">The client needed the app to become a daily habit, not an occasional transaction tool. A loyalty programme that only activates at point of purchase doesn't build brand affinity — it just delays it.</div>
         </div>
         <div class="cs-insight-card">
           <div class="cs-insight-label">The User Problem</div>
@@ -667,7 +705,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">1</div>
           <div>
             <div class="cs-step-title">Discovery — What actually drives return behaviour?</div>
-            <p class="cs-step-body">Researched engagement patterns across successful loyalty and gamification systems — from retail (Starbucks, Nike) to gaming (Duolingo, Pokémon GO) to understand the underlying mechanics that drive habitual return. Conducted user interviews with Blue App users to understand their current relationship with the app and their expectations of reward and recognition. Key finding: UAE users responded strongly to status and social visibility, not just personal milestones.</p>
+            <p class="cs-step-body">Researched engagement patterns across successful loyalty and gamification systems — from retail (Starbucks, Nike) to gaming (Duolingo, Pokémon GO) to understand the underlying mechanics that drive habitual return. Conducted user interviews with existing app users to understand their current relationship with the app and their expectations of reward and recognition. Key finding: UAE users responded strongly to status and social visibility, not just personal milestones.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">User interviews</span><span class="cs-step-tag">Gamification research</span><span class="cs-step-tag">Competitive analysis</span><span class="cs-step-tag">Behavioural pattern mapping</span></div>
           </div>
         </div>
@@ -675,7 +713,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">2</div>
           <div>
             <div class="cs-step-title">Mechanics Design — The engagement loop before the interface</div>
-            <p class="cs-step-body">Designed the engagement mechanics before touching any visual design. Built out the core loop: earn actions (purchases, app interactions, brand engagement) → progression triggers → collectible unlocks → status signals → social visibility. Critically, the system was designed so that collectibles weren't random — they were tied to specific brand interactions, making each avatar piece a record of a real customer relationship with an Al-Futtaim brand.</p>
+            <p class="cs-step-body">Designed the engagement mechanics before touching any visual design. Built out the core loop: earn actions (purchases, app interactions, brand engagement) → progression triggers → collectible unlocks → status signals → social visibility. Critically, the system was designed so that collectibles weren't random — they were tied to specific brand interactions, making each avatar piece a record of a real customer relationship with a brand.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Engagement loop design</span><span class="cs-step-tag">Reward mechanics</span><span class="cs-step-tag">Progression framework</span><span class="cs-step-tag">Collectible taxonomy</span></div>
           </div>
         </div>
@@ -683,7 +721,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">3</div>
           <div>
             <div class="cs-step-title">Identity System — Avatar as personal expression</div>
-            <p class="cs-step-body">Designed a digital avatar system where each user builds a visual identity over time through their brand interactions. Avatars were customisable across a defined set of dimensions — body, expression, style, accessories — with collectible elements unlocking based on engagement history. The design system had to balance creative latitude for users with enough constraint to maintain visual coherence across a diverse set of Al-Futtaim brands and collectible categories.</p>
+            <p class="cs-step-body">Designed a digital avatar system where each user builds a visual identity over time through their brand interactions. Avatars were customisable across a defined set of dimensions — body, expression, style, accessories — with collectible elements unlocking based on engagement history. The design system had to balance creative latitude for users with enough constraint to maintain visual coherence across a diverse set of brand categories and collectible styles.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Digital identity design</span><span class="cs-step-tag">Avatar system</span><span class="cs-step-tag">Collectible design framework</span><span class="cs-step-tag">Design system</span></div>
           </div>
         </div>
@@ -691,7 +729,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
           <div class="cs-step-num">4</div>
           <div>
             <div class="cs-step-title">Concept Testing — Does the engagement loop actually engage?</div>
-            <p class="cs-step-body">Tested the mechanics and identity system with users from across Blue App's demographic range. The key tension I was testing for: did the gamification feel rewarding or patronising to older and premium segments? Finding: the collectible system worked well across ages when framed as "your brand history" rather than "playing a game." The framing shift — from game mechanics to personal record — was the critical design pivot that made the system work for the full user base.</p>
+            <p class="cs-step-body">Tested the mechanics and identity system with users from across the app's demographic range. The key tension I was testing for: did the gamification feel rewarding or patronising to older and premium segments? Finding: the collectible system worked well across ages when framed as "your brand history" rather than "playing a game." The framing shift — from game mechanics to personal record — was the critical design pivot that made the system work for the full user base.</p>
             <div class="cs-step-tags"><span class="cs-step-tag">Concept testing</span><span class="cs-step-tag">Cross-segment validation</span><span class="cs-step-tag">Framing iteration</span></div>
           </div>
         </div>
@@ -706,7 +744,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
     <div class="cs-section">
       <div class="cs-section-label">04 — What Happened</div>
       <h2 class="cs-section-heading">Partially live. <em>What's shipped and what it showed.</em></h2>
-      <p class="cs-body">Core features of the gamification and avatar system are live in Blue App, with remaining features in phased rollout. As a partially live project, full engagement metrics are still accumulating — but the design work established several things that weren't in place before launch:</p>
+      <p class="cs-body">Core features of the gamification and avatar system are live, with remaining features in phased rollout. As a partially live project, full engagement metrics are still accumulating — but the design work established several things that weren't in place before launch:</p>
       <div class="cs-two-col">
         <div class="cs-insight-card">
           <div class="cs-insight-label">What shipped</div>
@@ -714,10 +752,10 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
         </div>
         <div class="cs-insight-card">
           <div class="cs-insight-label">What it enabled</div>
-          <div class="cs-insight-text">Blue App now has a loyalty layer that exists between purchase cycles — giving the app a presence in users' daily digital lives that doesn't depend on a transaction trigger. That was the core strategic objective, and the shipped features deliver it.</div>
+          <div class="cs-insight-text">The app now has a loyalty layer that exists between purchase cycles — giving the app a presence in users' daily digital lives that doesn't depend on a transaction trigger. That was the core strategic objective, and the shipped features deliver it.</div>
         </div>
       </div>
-      <p class="cs-body" style="margin-top:1.5rem">The mechanics framework and collectible taxonomy were designed for extensibility — new Al-Futtaim brand partnerships can be added to the system without redesigning the core. This was deliberate: the design needed a longer shelf life than the initial launch scope, and it's proving out as rollout continues.</p>
+      <p class="cs-body" style="margin-top:1.5rem">The mechanics framework and collectible taxonomy were designed for extensibility — new brand partnerships can be added to the system without redesigning the core. This was deliberate: the design needed a longer shelf life than the initial launch scope, and it's proving out as rollout continues.</p>
       <p class="cs-body" style="font-size:.75rem;color:var(--light)">Live engagement metrics and performance data withheld per NDA. Available in discussion during interview.</p>
     </div>
 
@@ -736,7 +774,7 @@ footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1040px;margi
       <p class="cs-cta-text">Want to walk through the engagement system design?</p>
       <a href="mailto:hello@alifdesigns.com?subject=Portfolio%20Request%20%E2%80%94%20Blue%20App" class="cs-cta-btn">Get in touch →</a>
     </div>
-    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Avatar designs, collectible visuals, and unreleased product features are withheld per Al-Futtaim Group confidentiality agreements. Full design documentation available to hiring managers on request.</div>
+    <div class="cs-nda-note">🔒 This case study presents process, methodology, and strategic framing only. Avatar designs, collectible visuals, and unreleased product features are withheld per client confidentiality agreements. Full design documentation available to hiring managers on request.</div>
   </div>
 </div>
 
@@ -746,9 +784,9 @@ const PASSWORD = 'melbourne2025';
 let pendingProject = null;
 
 const projectMap = {
-  toyota:    { title: 'Toyota &amp; Lexus UAE',       modal: 'cs-toyota'    },
-  alghurair: { title: 'Al Ghurair Properties',        modal: 'cs-alghurair' },
-  blueapp:   { title: 'Blue App — Al-Futtaim',        modal: 'cs-blueapp'   }
+  toyota:    { title: 'Dual Auto Brands — UAE',        modal: 'cs-toyota'    },
+  alghurair: { title: 'UAE Real Estate Developer',     modal: 'cs-alghurair' },
+  blueapp:   { title: 'Retail Super-App',              modal: 'cs-blueapp'   }
 };
 
 function openGate(project) {
@@ -837,11 +875,72 @@ document.addEventListener('keydown', function(e) {
 // Pastel → white on scroll
 window.addEventListener('scroll', function() {
   if (window.scrollY > 80) {
-    document.body.classList.add('scrolled');
+    document.documentElement.classList.add('scrolled');
   } else {
-    document.body.classList.remove('scrolled');
+    document.documentElement.classList.remove('scrolled');
   }
 }, { passive: true });
+
+// ── CURSOR + RIPPLES ──────────────────────────────
+(function() {
+  const cursor = document.getElementById('cursor');
+  const canvas = document.getElementById('ripple-canvas');
+  const ctx = canvas.getContext('2d');
+  const ripples = [];
+  let lastX = -999, lastY = -999, lastTime = 0;
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  document.addEventListener('mousemove', function(e) {
+    const x = e.clientX, y = e.clientY;
+    cursor.style.left = x + 'px';
+    cursor.style.top  = y + 'px';
+    cursor.classList.add('visible');
+
+    const dx = x - lastX, dy = y - lastY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const now  = Date.now();
+    if (dist > 28 || now - lastTime > 100) {
+      lastX = x; lastY = y; lastTime = now;
+      ripples.push({ x, y, r: 0, maxR: 70 + Math.random() * 50, alpha: 0.2 });
+      if (ripples.length > 24) ripples.shift();
+    }
+  });
+
+  document.addEventListener('mouseleave', function() {
+    cursor.classList.remove('visible');
+  });
+
+  // Scale cursor on interactive elements
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest('a, button, [onclick], .project-row, .focus-pill')) {
+      cursor.classList.add('hovered');
+    } else {
+      cursor.classList.remove('hovered');
+    }
+  });
+
+  (function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const rp = ripples[i];
+      rp.r    += 1.8;
+      rp.alpha *= 0.935;
+      if (rp.alpha < 0.004) { ripples.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(80,80,80,' + rp.alpha + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
 </script>
 </body>
 </html>
