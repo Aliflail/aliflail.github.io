@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing Dashboards for Decisions | Alif Noushad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;--off:#fafafa;--ink:#111111;--mid:#555555;
+  --light:#767676;--rule:#e8e8e8;--cream:#EDE9E3;
+  --mono:'Jost',sans-serif;--serif:'Playfair Display',serif;
+}
+html{background:var(--cream);transition:background .7s ease;scroll-behavior:smooth}
+html.scrolled{background:#ffffff}
+body{font-family:var(--mono);font-weight:300;color:var(--ink);background:transparent;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.label{font-size:.65rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--light)}
+nav{padding:2rem 3rem;max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(17,17,17,.12)}
+.nav-name{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);text-decoration:none}
+.nav-right{display:flex;gap:2.5rem;list-style:none}
+.nav-right a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);text-decoration:none;transition:color .2s}
+.nav-right a:hover,.nav-right a.active{color:var(--ink)}
+.nav-toggle{display:none;background:var(--ink);color:#fff;border:none;border-radius:100px;padding:.65rem .95rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;align-items:center;gap:.55rem}
+.nav-toggle-mark{display:flex;flex-direction:column;gap:3px}
+.nav-toggle-mark span{display:block;width:14px;height:1px;background:currentColor}
+.article{max-width:1120px;margin:0 auto;padding:5rem 3rem 7rem}
+.article-kicker{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.article-kicker::before{content:'';width:3.6rem;height:1px;background:var(--ink)}
+.article-hero{display:grid;grid-template-columns:minmax(0,1.1fr) 280px;gap:4rem;align-items:end;margin-bottom:5rem}
+h1{font-family:var(--serif);font-size:clamp(3rem,7vw,6.2rem);font-weight:400;line-height:.98;letter-spacing:-.02em;max-width:12ch;opacity:0;transform:translateY(20px);animation:fadeUp .8s ease .1s forwards}
+h1 em{font-style:italic;color:#ff5a1f}
+.article-meta{background:#fff;border:1px solid var(--rule);border-radius:18px;padding:1.5rem;box-shadow:0 18px 40px rgba(17,17,17,.04);opacity:0;animation:fadeUp .8s ease .25s forwards}
+.article-meta p{font-size:.82rem;color:var(--mid);line-height:1.7;margin-top:1rem}
+.article-body{max-width:760px;margin:0 auto}
+.article-body h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.55rem);font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:4rem 0 1.3rem}
+.article-body p{font-size:1rem;color:var(--mid);line-height:1.9;margin-bottom:1.25rem}
+.article-body p.lede{font-size:1.22rem;color:var(--ink);line-height:1.75;margin-bottom:1.5rem}
+.article-body ul{list-style:none;margin:1.4rem 0 2rem;display:grid;gap:.75rem}
+.article-body li{font-size:.96rem;color:var(--mid);line-height:1.7;display:grid;grid-template-columns:1.2rem 1fr;gap:.55rem}
+.article-body li::before{content:'-';color:var(--ink)}
+.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin:1.6rem 0 2.2rem}
+.question-card{background:#fff;border:1px solid var(--rule);padding:1rem;font-size:.86rem;color:var(--mid);line-height:1.55}
+.chart-map{display:grid;grid-template-columns:1.1fr .9fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.6rem 0 2.2rem}
+.chart-map div{background:#fff;padding:1rem;font-size:.88rem;line-height:1.55;color:var(--mid)}
+.chart-map strong{display:block;color:var(--ink);font-weight:500;margin-bottom:.3rem}
+.example-card{border-left:2px solid var(--ink);padding:1rem 0 1rem 1.6rem;margin:1.8rem 0 2.2rem}
+.example-card p{font-family:var(--serif);font-size:1.35rem;color:var(--ink);line-height:1.35;margin:0}
+.book-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#101010 0%,#4e31d1 46%,#ff5a1f 100%);border-radius:18px;padding:2rem;margin:4rem 0;color:#fff}
+.book-cta::after{content:'';position:absolute;inset:auto -18% -45% 35%;height:180px;background:rgba(255,255,255,.16);filter:blur(36px);transform:rotate(-8deg)}
+.book-cta .label{color:rgba(255,255,255,.72)}
+.book-cta h2{position:relative;z-index:1;color:#fff;margin:1rem 0 .9rem;font-size:clamp(1.8rem,3vw,2.5rem)}
+.book-cta p{position:relative;z-index:1;color:rgba(255,255,255,.82);max-width:50ch}
+.book-cta a{position:relative;z-index:1;display:inline-block;margin-top:.8rem;background:#fff;color:#111;text-decoration:none;padding:.9rem 1.35rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+footer{border-top:1px solid var(--rule);padding:2rem 3rem;max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:.65rem;letter-spacing:.08em;color:var(--light)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--ink)}
+#cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity .25s,width .2s ease,height .2s ease;will-change:left,top}
+#cursor.visible{opacity:1}
+#cursor.hovered{width:22px;height:22px;background:transparent;border:1.5px solid var(--ink)}
+#ripple-canvas{position:fixed;inset:0;pointer-events:none;z-index:-1}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@media(pointer:fine){*{cursor:none!important}}
+@media(pointer:coarse){#cursor,#ripple-canvas{display:none}}
+@media(max-width:768px){
+  nav{padding:1.5rem;align-items:center;flex-wrap:wrap;gap:1rem}
+  .nav-toggle{display:inline-flex;margin-left:auto}
+  .nav-right{display:none;width:100%;flex-direction:column;gap:0;border-top:1px solid var(--rule);padding-top:.75rem}
+  nav.nav-open .nav-right{display:flex}
+  .nav-right li{border-bottom:1px solid var(--rule)}
+  .nav-right li:last-child{border-bottom:none}
+  .nav-right a{display:block;font-size:.68rem;padding:.8rem 0}
+  .article{padding:3.5rem 1.5rem 6rem}
+  .article-hero,.question-grid,.chart-map{grid-template-columns:1fr}
+  h1{font-size:clamp(3rem,16vw,5rem)}
+  footer{flex-direction:column;gap:1rem;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+<canvas id="ripple-canvas"></canvas>
+<div id="cursor"></div>
+
+<nav>
+  <a href="index.html" class="nav-name">Alif Noushad</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+    <span>Menu</span>
+    <span class="nav-toggle-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <ul class="nav-right">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="mailto:hello@alifdesigns.com">Contact</a></li>
+    <li><a href="Alif_Noushad_Resume_2026.pdf" download style="color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:1px">Resume ↓</a></li>
+  </ul>
+</nav>
+
+<main class="article">
+  <div class="article-kicker"><span class="label">Designing for Decisions · 7 min read</span></div>
+  <header class="article-hero">
+    <h1>Designing Dashboards for <em>Decisions.</em></h1>
+    <aside class="article-meta">
+      <div class="label">Written by</div>
+      <p><strong style="color:var(--ink);font-weight:400">Alif Noushad</strong><br>Senior Experience Designer</p>
+      <p>How to create clear, useful dashboards that help people understand what is happening, what needs attention, and what to do next.</p>
+    </aside>
+  </header>
+
+  <article class="article-body">
+    <p class="lede">Most dashboard projects start with a familiar request: “Here is the data. Can you make it look nice?”</p>
+    <p>The data team has cleaned the tables. Business analysts have collected use cases. Stakeholders have shared a list of KPIs. By the time the designer enters the project, the expectation is often visual polish: choose better colors, arrange the charts, make the dashboard presentable.</p>
+    <p>That is where many dashboards start going wrong.</p>
+    <p>Not because visual design does not matter. It does. But because a dashboard is not a poster. It is not a slide. It is not a place to show everything the organization knows.</p>
+    <p>A dashboard is a decision-making tool.</p>
+    <p>Someone opens it under pressure because they need to understand what is happening, what needs attention, and what to do next. If the design does not help them reach that point faster, the dashboard becomes another report people ignore.</p>
+    <p>I have seen this pattern often: a dashboard looks impressive in a meeting, but feels exhausting in daily use. Users scroll, search, filter, second-guess, and eventually go back to Excel or ask someone else for the answer.</p>
+    <p>The problem is rarely one bad chart. The deeper problem is that the team designed around data availability instead of user decisions.</p>
+
+    <h2>Start with the question, not the dataset</h2>
+    <p>A common dashboard mistake is starting with: “What data do we have?” That question is useful, but it should not be the first one.</p>
+    <p>A better starting point is: “What decision does this dashboard need to support?”</p>
+    <p>This changes the entire design process. Instead of trying to fit every available metric onto the screen, the team starts asking what the user is actually trying to understand.</p>
+    <p>Before opening Figma, Power BI, Tableau, or any other tool, I like to clarify a few things:</p>
+    <div class="question-grid">
+      <div class="question-card">Who will use this dashboard?</div>
+      <div class="question-card">Where will they use it?</div>
+      <div class="question-card">How often will they use it?</div>
+      <div class="question-card">What are their daily tasks?</div>
+      <div class="question-card">What frustrates them today?</div>
+      <div class="question-card">What decision does the data support?</div>
+      <div class="question-card">What does success look like?</div>
+    </div>
+    <p>These questions sound simple, but they prevent a lot of unnecessary design work. An executive checking performance in a meeting does not need the same view as an analyst investigating a trend. A control room operator looking at real-time activity does not need the same interaction model as a manager reviewing a weekly summary.</p>
+    <p>When we skip this step, dashboards become generic. And generic dashboards usually serve everyone slightly, but nobody well.</p>
+
+    <h2>Observe the real environment</h2>
+    <p>Requirements documents rarely show the full picture.</p>
+    <p>One of the most useful methods for dashboard design is observing people in the environment where they actually work. Not just asking them what they need, but watching how they use information, what they ignore, what shortcuts they take, and what interrupts them.</p>
+    <p>In one government dashboard project, the initial requirement sounded straightforward: create a dashboard to monitor city growth and anticipate future needs. On paper, it could have become a standard analytics interface. But the real context changed the design direction.</p>
+    <p>The team worked in a dimly lit room surrounded by large wall displays showing real-time data throughout the day. A bright white dashboard may have looked clean in a presentation, but it would have been uncomfortable in that environment. Dark mode was not a visual preference. It was a usability requirement.</p>
+    <p>That kind of insight is difficult to find in a spreadsheet. You discover it by watching people work.</p>
+    <p>The lighting of the room, the size of the screen, the distance from the display, the level of interruption, and the urgency of the task all affect dashboard design. A dashboard is not only used on a screen. It is used in a context.</p>
+
+    <h2>Understand the data before designing the interface</h2>
+    <p>Designers do not need to become data analysts. But for dashboard design, we need to understand the data well enough to know what each metric means, how it behaves, and what decision it supports.</p>
+    <p>A useful exercise is to create a simple data inventory before designing the interface. For each important field, capture:</p>
+    <ul>
+      <li>What does this metric tell the user?</li>
+      <li>What decision does it support?</li>
+      <li>What type of data is it: number, date, category, text, location, yes/no?</li>
+      <li>What unit or format should it use?</li>
+      <li>What is a typical value?</li>
+      <li>What counts as good, warning, or bad?</li>
+      <li>Should it trigger an alert?</li>
+    </ul>
+    <p>The most useful line in this exercise is: “This shows ___ so the user can decide ___.”</p>
+    <p>For example: “This shows daily sales so the user can decide whether to run a promotion.” If you cannot complete that sentence, the metric may not belong on the first screen. A number without a decision is often just noise.</p>
+
+    <section class="book-cta">
+      <div class="label">Free Playbook</div>
+      <h2>Want the practical dashboard checklist?</h2>
+      <p>Download the companion playbook with decision-first prompts, dashboard review questions, and a practical checklist for reducing noise before your next design review.</p>
+      <a id="gumroad-link" href="https://gumroad.com/l/dashboard-decisions" target="_blank" rel="noopener">Download on Gumroad</a>
+    </section>
+
+    <p>This inventory also helps reveal relationships. Total sales may depend on orders and average order value. Delivery delay may relate to region, shipment size, or clearance time. When related fields are understood together, the design can show cause and context instead of isolated numbers.</p>
+    <p>It also helps identify caveats. Maybe returns are posted the next day. Maybe data refreshes hourly, not live. Maybe a metric is only available for certain regions. Those details matter because trust is fragile in dashboards. If users do not understand why a number looks wrong, they may stop trusting the whole system.</p>
+
+    <h2>Design within the tool’s reality</h2>
+    <p>There is another reason dashboard designs fail: the design cannot be built as imagined.</p>
+    <p>A chart that looks beautiful in Figma may not exist in Power BI, Tableau, or Cognos. A layout may break when real data appears. A custom visual may slow down the dashboard. A color treatment may not translate well in the final tool.</p>
+    <p>This is not just a development issue. It is a design issue. Before going too far into high-fidelity design, understand the tool:</p>
+    <ul>
+      <li>What chart types are supported?</li>
+      <li>What interactions are possible?</li>
+      <li>Can users drill down, filter, hover, sort, compare, or export?</li>
+      <li>How much data can the dashboard handle before performance suffers?</li>
+      <li>How often does the data refresh?</li>
+      <li>Can the interface show a “last updated” timestamp?</li>
+      <li>Which fields are restricted by role or privacy rules?</li>
+    </ul>
+    <p>This does not reduce creativity. It makes creativity useful. A dashboard design is successful only when it survives contact with the real data, real users, and the real platform.</p>
+
+    <h2>Every chart should answer exactly one question</h2>
+    <p>One mistake appears in almost every dashboard. Teams choose charts because they’re available. Not because they’re appropriate.</p>
+    <p>Instead, start with the question.</p>
+    <div class="chart-map">
+      <div><strong>Which category performs best?</strong>Bar chart</div>
+      <div><strong>How has performance changed over time?</strong>Line chart</div>
+      <div><strong>Is there a relationship between two variables?</strong>Scatter plot</div>
+      <div><strong>What’s the most important number today?</strong>KPI card</div>
+      <div><strong>What exact values do I need?</strong>Table</div>
+    </div>
+    <p>Notice something? The chart comes after the question. Never before.</p>
+
+    <h2>Context turns numbers into meaning</h2>
+    <p>A number alone often creates more questions than answers.</p>
+    <div class="example-card"><p>Revenue<br>$2.8M</p></div>
+    <p>Good? Bad? Average? Nobody knows.</p>
+    <p>Now imagine seeing this.</p>
+    <div class="example-card"><p>Revenue<br>$2.8M<br>↑ 18% vs last month | Above target by 6%</p></div>
+    <p>Immediately useful. The number didn’t change. The context did. Context is often more valuable than the metric itself.</p>
+
+    <h2>Design for the brain, not the screen</h2>
+    <p>Dashboards are often designed for “business users,” “executives,” or “operations teams.” But underneath those roles, we are designing for the human brain.</p>
+    <p>The brain looks for patterns. It groups nearby things. It notices differences before details. It gets tired when too much information competes for attention.</p>
+    <p>Cognitive load is the mental effort required to make sense of what is on the screen. When a dashboard has too many charts, inconsistent colors, unnecessary labels, heavy borders, unclear hierarchy, and competing signals, it forces users to work harder than they should.</p>
+    <p>A few ways to reduce that effort:</p>
+    <ul>
+      <li>Remove anything that does not help the user decide.</li>
+      <li>Show the big picture first, then allow drill-down.</li>
+      <li>Use lighter visual treatment for secondary information.</li>
+      <li>Keep related information close together.</li>
+      <li>Use consistent colors, labels, and formatting.</li>
+      <li>Reserve strong color for what truly needs attention.</li>
+    </ul>
+    <p>This is where visual design becomes more than aesthetics. Whitespace separates ideas. Alignment creates order. Consistency builds familiarity. Hierarchy guides attention.</p>
+    <p>Minimalism in dashboard design does not mean making everything empty or plain. It means every element has a job. If removing something does not change the meaning, it probably does not belong.</p>
+  </article>
+</main>
+
+<footer>
+  <span class="footer-copy">© 2026 Alif · Lead Product Designer</span>
+  <ul class="footer-links">
+    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+    <li><a href="mailto:alifnoushad.96@gmail.com">Email</a></li>
+  </ul>
+</footer>
+
+<script>
+const GUMROAD_PRODUCT_URL = 'https://gumroad.com/l/dashboard-decisions';
+document.getElementById('gumroad-link').href = GUMROAD_PRODUCT_URL;
+
+document.querySelectorAll('nav').forEach(nav => {
+  const toggle = nav.querySelector('.nav-toggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  nav.querySelectorAll('.nav-right a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+});
+
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 80) document.documentElement.classList.add('scrolled');
+  else document.documentElement.classList.remove('scrolled');
+}, { passive: true });
+
+(function() {
+  const cursor = document.getElementById('cursor');
+  const canvas = document.getElementById('ripple-canvas');
+  const ctx = canvas.getContext('2d');
+  const ripples = [];
+  let lastX = -999, lastY = -999, lastTime = 0;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  document.addEventListener('mousemove', function(e) {
+    const x = e.clientX, y = e.clientY;
+    cursor.style.left = x + 'px';
+    cursor.style.top = y + 'px';
+    cursor.classList.add('visible');
+
+    const dx = x - lastX, dy = y - lastY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const now = Date.now();
+    if (dist > 28 || now - lastTime > 100) {
+      lastX = x; lastY = y; lastTime = now;
+      ripples.push({ x, y, r: 0, maxR: 70 + Math.random() * 50, alpha: 0.2 });
+      if (ripples.length > 24) ripples.shift();
+    }
+  });
+
+  document.addEventListener('mouseleave', function() {
+    cursor.classList.remove('visible');
+  });
+
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest('a, button, [onclick]')) cursor.classList.add('hovered');
+    else cursor.classList.remove('hovered');
+  });
+
+  (function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const rp = ripples[i];
+      rp.r += 1.8;
+      rp.alpha *= 0.935;
+      if (rp.alpha < 0.004) { ripples.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(80,80,80,' + rp.alpha + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+</script>
+</body>
+</html>
